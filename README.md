@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📘 Design and Analysis of Algorithms Laboratory
+#  Design and Analysis of Algorithms Laboratory
 
 ### DAA Lab Assignments | C Programming | GNUPlot
 
@@ -16,7 +16,7 @@ A collection of **Design and Analysis of Algorithms (DAA)** laboratory programs 
 
 ---
 
-# 👨‍🎓 Student Information
+#  Student Information
 
 | Field | Details |
 |-------|---------|
@@ -31,7 +31,7 @@ A collection of **Design and Analysis of Algorithms (DAA)** laboratory programs 
 
 ---
 
-# 📖 About the Repository
+#  About the Repository
 
 This repository contains my laboratory implementations for the **Design and Analysis of Algorithms (DAA)** course.
 
@@ -51,7 +51,7 @@ Each program is written in **C**, documented, and accompanied by explanations of
 
 ---
 
-# 📂 Repository Structure
+#  Repository Structure
 
 ```text
 DAA_LAB
@@ -89,7 +89,7 @@ DAA_LAB
 
 ---
 
-# 📚 Lab Contents
+#  Lab Contents
 
 | Problem | Title | Algorithm |
 |----------|-------|-----------|
@@ -102,11 +102,11 @@ DAA_LAB
 
 ---
 
-# 📝 Problem Descriptions
+#  Problem Descriptions
 
 ---
 
-## 🔹 Problem 1 – Growth Rate Analysis
+##  Problem 1 – Growth Rate Analysis
 
 ### Objective
 
@@ -138,7 +138,7 @@ Compare various mathematical functions according to their asymptotic growth.
 
 ---
 
-## 🔹 Problem 2 – Fair vs Biased Coin Simulation
+##  Problem 2 – Fair vs Biased Coin Simulation
 
 ### Objective
 
@@ -158,7 +158,7 @@ Simulate repeated coin tosses to verify probability experimentally.
 
 ---
 
-## 🔹 Problem 3 – Bubble Sort Performance Analysis
+##  Problem 3 – Bubble Sort Performance Analysis
 
 ### Objective
 
@@ -180,7 +180,7 @@ The optimized version terminates early if the array becomes sorted, significantl
 
 ---
 
-## 🔹 Problem 4 – Tower of Hanoi
+##  Problem 4 – Tower of Hanoi
 
 ### Objective
 
@@ -206,7 +206,7 @@ Output
 
 ---
 
-## 🔹 Problem 5 – Partition Point Detection
+##  Problem 5 – Partition Point Detection
 
 ### Objective
 
@@ -237,7 +237,7 @@ O(log n)
 
 ---
 
-## 🔹 Problem 6 – Element Uniqueness
+##  Problem 6 – Element Uniqueness
 
 ### Objective
 
@@ -255,7 +255,7 @@ Features
 
 ---
 
-# 📊 Time Complexity Summary
+#  Time Complexity Summary
 
 | Problem | Time Complexity | Space Complexity |
 |----------|-----------------|------------------|
@@ -268,7 +268,7 @@ Features
 
 ---
 
-# 📈 Graph Generation
+#  Graph Generation
 
 The following experiments generate graphs using **GNUPlot**.
 
@@ -285,7 +285,7 @@ gnuplot -persist bubble.gnu
 
 ---
 
-# ⚙️ Compilation
+#  Compilation
 
 Using GCC
 
@@ -315,7 +315,7 @@ Linux
 
 ---
 
-# 💻 Requirements
+#  Requirements
 
 - GCC Compiler
 - GNUPlot
@@ -324,7 +324,7 @@ Linux
 
 ---
 
-# 🎯 Learning Outcomes
+#  Learning Outcomes
 
 After completing these laboratory exercises, the following concepts are understood:
 
@@ -343,13 +343,13 @@ After completing these laboratory exercises, the following concepts are understo
 
 
 
-# 🤝 Contributions
+#  Contributions
 
 This repository is maintained as part of my academic coursework. Suggestions and improvements are always welcome. Feel free to fork the repository, raise issues, or submit pull requests for enhancements.
 
 ---
 
-# 📜 License
+# License
 
 This project is licensed under the **MIT License**.
 
@@ -359,8 +359,8 @@ You are free to use the code for learning purposes. If you use any part of this 
 
 <div align="center">
 
-### ⭐ If you found this repository useful, consider giving it a star!
+### If you found this repository useful, consider giving it a star!
 
-Made with ❤️ using C and GNUPlot
+
 
 </div>
