@@ -1,366 +1,648 @@
-<div align="center">
+# Design and Analysis of Algorithms
 
-#  Design and Analysis of Algorithms Laboratory
+```{=html}
+<p align="center">
+```
+`<strong>`{=html}DAA Laboratory Assignments --- Lab 01 & Lab
+02`</strong>`{=html}
+```{=html}
+</p>
+```
+```{=html}
+<p align="center">
+```
+`<img src="https://img.shields.io/badge/Language-C-A8B9CC?style=flat-square&logo=c&logoColor=white" />`{=html}
+`<img src="https://img.shields.io/badge/Compiler-GCC-FE7A16?style=flat-square&logo=gnu&logoColor=white" />`{=html}
+`<img src="https://img.shields.io/badge/Analysis-Asymptotic%20%2B%20Empirical-6E4AFF?style=flat-square" />`{=html}
+`<img src="https://img.shields.io/badge/Plots-CSV%20%2B%20GNUPlot-1D9E5E?style=flat-square" />`{=html}
+```{=html}
+</p>
+```
 
-### DAA Lab Assignments | C Programming | GNUPlot
+------------------------------------------------------------------------
 
-A collection of **Design and Analysis of Algorithms (DAA)** laboratory programs implemented in **C**, focusing on algorithm design, complexity analysis, recursion, searching, sorting, probability simulations, and graphical performance visualization using **GNUPlot**.
+## Introduction
 
-![Language](https://img.shields.io/badge/Language-C-blue.svg)
-![Compiler](https://img.shields.io/badge/Compiler-GCC-orange.svg)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-green.svg)
-![Graphs](https://img.shields.io/badge/Visualization-GNUPlot-red.svg)
-![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)
+This repository contains my solutions for the Design and Analysis of
+Algorithms Laboratory. Each lab has its own folder and each question has
+a separate folder containing its C source code and generated
+experimental data or plots.
 
-</div>
+The programs combine algorithm implementation with theoretical and
+empirical analysis. Where required, they count operations or measure
+execution time and use the results to validate the expected order of
+growth.
 
----
+## Student Information
 
-#  Student Information
+  Field        Details
+  ------------ ----------------------------------------------
+  Name         Anurag Samal
+  Student ID   B525009
+  Branch       Computer Engineering (CE)
+  Institute    IIIT Bhubaneswar
+  Course       Design and Analysis of Algorithms Laboratory
+  Semester     B.Tech 3rd Semester
+  Instructor   Dr. Ajaya Kumar Dash
 
-| Field | Details |
-|-------|---------|
-| **Name** | Anurag Samal |
-| **ID** | B525009 |
-| **Course** | Design and Analysis of Algorithms Laboratory |
-| **Instructor** | Dr. Ajaya Kumar Dash |
-| **Language Used** | C (C99 Standard) |
-| **Compiler** | GCC |
-| **IDE** | Visual Studio Code |
-| **Graphing Tool** | GNUPlot |
+## Repository Structure
 
----
-
-#  About the Repository
-
-This repository contains my laboratory implementations for the **Design and Analysis of Algorithms (DAA)** course.
-
-The objective of these programs is to understand the practical implementation of classical algorithms and verify their theoretical analysis through experimentation and graphical visualization.
-
-The repository includes:
-
-- Mathematical Growth Analysis
-- Probability Simulations
-- Sorting Algorithms
-- Recursive Algorithms
-- Searching Algorithms
-- Complexity Analysis
-- Graph Generation using GNUPlot
-
-Each program is written in **C**, documented, and accompanied by explanations of the algorithm, time complexity, and (where applicable) performance graphs.
-
----
-
-#  Repository Structure
-
-```text
-DAA_LAB
-│
+``` text
+DAA_Lab/
 ├── README.md
-│
-└── LAB_1
-    │
-    ├── 1. Put them in Order
-    │   ├── growth.c
-    │   ├── growth.dat
-    │   └── plot.gnu
-    │
-    ├── 2. Fair vs Biased coin
-    │   ├── coin.c
-    │   ├── coin.dat
-    │   └── coin.gnu
-    │
-    ├── 3. Performance analysis of bubble sort
-    │   ├── bubble.c
-    │   ├── bubble.dat
-    │   └── bubble.gnu
-    │
-    ├── 4. Towers of Hanoi
-    │   ├── TOH.c
-    │   ├── toh.dat
-    │   └── toh.gnu
-    │
-    ├── 5. Find the partition point
-    │   └── partition.c
-    │
-    └── 6. Element uniqueness
-        └── unique.c
+├── DAA_Lab_01/
+│   ├── Q1_Putting_them_in_order/
+│   ├── Q2_Fair_vs_Biased_Coin/
+│   ├── Q3_Performance_Analysis_of_bubble_sort/
+│   ├── Q4_Tower_of_Hanoi/
+│   ├── Q5_Find_the_partition_point/
+│   └── Q6_Element_uniqueness/
+└── DAA_Lab_02/
+    ├── Q1_Dictionary_Operations/
+    ├── Q2_Merge_Sort_vs_Modified_Merge_Sort/
+    └── Q3_Merging_k_Sorted_Arrays/
 ```
 
----
+------------------------------------------------------------------------
 
-#  Lab Contents
+# Lab Index
 
-| Problem | Title | Algorithm |
-|----------|-------|-----------|
-| 1 | Growth Rate Analysis | Asymptotic Analysis |
-| 2 | Fair vs Biased Coin Simulation | Probability Simulation |
-| 3 | Bubble Sort Performance Analysis | Sorting |
-| 4 | Tower of Hanoi | Recursion |
-| 5 | Partition Point Detection | Binary Search |
-| 6 | Element Uniqueness | Brute Force Search |
+  ------------------------------------------------------------------------
+  Lab                   Topic                                    Questions
+  --------------------- --------------------- ----------------------------
+  Lab 01                Growth of functions,                             6
+                        empirical analysis,   
+                        recurrences           
 
----
+  Lab 02                Dictionary                                       3
+                        operations,           
+                        merge-sort variants,  
+                        k-way merging         
+  ------------------------------------------------------------------------
 
-#  Problem Descriptions
+------------------------------------------------------------------------
 
----
+# DAA Lab 01
 
-##  Problem 1 – Growth Rate Analysis
+> Growth rates, randomised simulation, and counting the work an
+> algorithm actually does.
 
-### Objective
+## Q1 --- Put Them in Order
 
-Compare various mathematical functions according to their asymptotic growth.
+Arrange the 12 given functions in increasing order of growth for
+sufficiently large `n`.
 
-### Concepts Covered
+The program compares `log2(f(n))` instead of raw function values to
+avoid overflow while preserving ordering.
 
-- Big-O Notation
-- Growth of Functions
-- Mathematical Modelling
+For `n = 10^6`, the obtained order is:
 
-### Functions Analysed
-
-- 1/n
-- log₂(n)
-- √n
-- n
-- n log₂(n)
-- n²
-- n³
-- n^(log₂n)
-- 3ⁿ
-
-### Output
-
-- Numerical Data
-- GNUPlot Graph
-- Growth Comparison
-
----
-
-##  Problem 2 – Fair vs Biased Coin Simulation
-
-### Objective
-
-Simulate repeated coin tosses to verify probability experimentally.
-
-### Concepts Covered
-
-- Random Number Generation
-- Probability
-- Law of Large Numbers
-
-### Output
-
-- Probability of Head
-- Comparison between Fair and Biased Coins
-- Probability Graph
-
----
-
-##  Problem 3 – Bubble Sort Performance Analysis
-
-### Objective
-
-Compare the normal Bubble Sort algorithm with an optimized version.
-
-### Features
-
-✔ Normal Bubble Sort
-
-✔ Optimized Bubble Sort
-
-✔ Number of Comparisons
-
-✔ Performance Graph
-
-### Observation
-
-The optimized version terminates early if the array becomes sorted, significantly reducing comparisons for already sorted or nearly sorted arrays.
-
----
-
-##  Problem 4 – Tower of Hanoi
-
-### Objective
-
-Implement the recursive Tower of Hanoi algorithm and analyse its growth.
-
-### Concepts Covered
-
-- Recursion
-- Recurrence Relation
-- Exponential Growth
-
-Formula
-
-```
-Moves = 2ⁿ − 1
+``` text
+1/n < log2(n) < n^0.51 < 12*sqrt(n) < 50*sqrt(n) < n*log2(n)
+< n^2-324 < 100n^2+6n < 2^32*n < 2n^3 < n^(log2 n) < 3^n
 ```
 
-Output
+Important observation:
 
-- Sequence of Moves
-- Total Moves
-- Growth Graph
-
----
-
-##  Problem 5 – Partition Point Detection
-
-### Objective
-
-Given an array consisting of 0's followed by 1's, determine the transition point.
-
-Example
-
-```
-00001111
+``` text
+2^32 * n = Θ(n)
 ```
 
-Transition
+because `2^32` is a constant.
 
-```
-0000|1111
-     ↑
-```
+**Artifacts**
 
-Algorithm Used
+-   `Q1_order_of_growth.c`
+-   `growth_order_data.csv`
+-   `Q1_growth_order_plot.png`
+-   `Q1_growth_order_linechart.png`
 
-- Binary Search
+The plot uses `log2(f(n))` and a symlog y-axis so both very small and
+extremely large values remain readable.
 
-Time Complexity
+## Q2 --- Fair vs Biased Coin
 
-```
-O(log n)
-```
+Simulate coin tosses, verify that the fair-coin probability of heads
+approaches `0.5`, and compare fair and biased coins.
 
----
+Recorded experiment for 1,000,000 tosses:
 
-##  Problem 6 – Element Uniqueness
+-   Fair coin: **0.50038**
+-   Coin with `p = 0.7`: **0.69989**
 
-### Objective
+Complexity:
 
-Determine whether duplicate elements exist among randomly generated numbers.
+-   Time: `Θ(n)`
+-   Space: `Θ(1)`
 
-Algorithm
+Program:
 
-- Brute Force Comparison
-
-Features
-
-- Random Number Generation
-- Duplicate Detection
-- Complexity Analysis
-
----
-
-#  Time Complexity Summary
-
-| Problem | Time Complexity | Space Complexity |
-|----------|-----------------|------------------|
-| Growth Rate Analysis | O(n) | O(1) |
-| Coin Simulation | O(n) | O(1) |
-| Bubble Sort | O(n²) | O(1) |
-| Tower of Hanoi | O(2ⁿ) | O(n) |
-| Partition Point | O(log n) | O(1) |
-| Element Uniqueness | O(n²) | O(1) |
-
----
-
-#  Graph Generation
-
-The following experiments generate graphs using **GNUPlot**.
-
-- Growth Rate Analysis
-- Coin Toss Simulation
-- Bubble Sort Comparison
-- Tower of Hanoi
-
-Example
-
-```bash
-gnuplot -persist bubble.gnu
+``` text
+Q2_coin_toss.c
 ```
 
----
+## Q3 --- Bubble Sort Performance
 
-#  Compilation
+Compare:
 
-Using GCC
+1.  Bubble sort with early termination.
+2.  Bubble sort that always performs all `n−1` passes.
 
-```bash
-gcc filename.c -o output
+  Version             Best Case   Worst Case   Space
+  ------------------- ----------- ------------ -------
+  Early termination   Ω(n)        O(n²)        Θ(1)
+  Full passes         Θ(n²)       Θ(n²)        Θ(1)
+
+For random data at `n = 2000`, the recorded comparison counts were
+1,997,824 for early termination and 1,999,000 for full passes.
+
+For sorted data, early termination required only 1,999 comparisons
+versus 1,999,000 for the full-pass version.
+
+**Artifacts**
+
+-   `Q3_bubble_sort.c`
+-   `bubble_sort_data.csv`
+-   `bubble_sort_sorted_data.csv`
+-   `Q3_bubble_sort_random_plot.png`
+-   `Q3_bubble_sort_sorted_plot.png`
+
+## Q4 --- Towers of Hanoi
+
+The recurrence is:
+
+``` text
+T(n) = 2T(n−1) + 1
 ```
 
-Example
+and its closed form is:
 
-```bash
-gcc bubble.c -o bubble
+``` text
+T(n) = 2^n − 1
 ```
 
-Run
+For 20 discs:
 
-Windows
-
-```bash
-bubble.exe
+``` text
+1,048,575 moves
 ```
 
-Linux
+Complexity:
 
-```bash
-./bubble
+-   Time: `Θ(2^n)`
+-   Recursion depth: `Θ(n)`
+
+**Artifacts**
+
+-   `Q4_tower_of_hanoi.c`
+-   `hanoi_data.csv`
+-   `Q4_hanoi_plot.png`
+-   `Q4_hanoi_plot_logscale.png`
+
+## Q5 --- Find the Partition Point
+
+Given an array of 0s followed by 1s, find the transition index.
+
+  Method          Time       Space
+  --------------- ---------- -------
+  Linear scan     Θ(n)       Θ(1)
+  Binary search   Θ(log n)   Θ(1)
+
+For a 1,000,000-element array with the boundary at index 333,333, the
+recorded comparison counts were 333,334 for linear search and 20 for
+binary search.
+
+Program:
+
+``` text
+Q5_partition_point.c
 ```
 
----
+## Q6 --- Element Uniqueness
 
-#  Requirements
+Determine whether all `n` elements are distinct.
 
-- GCC Compiler
-- GNUPlot
-- Visual Studio Code
-- Git
+  Method          Time           Space
+  --------------- -------------- -------
+  Brute force     O(n²)          Θ(1)
+  Sort and scan   Θ(n log n)     Θ(n)
+  Hashing         Θ(n) average   Θ(n)
 
----
+Program:
 
-#  Learning Outcomes
+``` text
+Q6_element_uniqueness.c
+```
 
-After completing these laboratory exercises, the following concepts are understood:
+## Lab 01 Complexity Summary
 
-- ✔ Asymptotic Analysis
-- ✔ Growth Functions
-- ✔ Probability Simulation
-- ✔ Bubble Sort Optimization
-- ✔ Binary Search
-- ✔ Divide and Conquer
-- ✔ Recursion
-- ✔ Complexity Analysis
-- ✔ Performance Evaluation
-- ✔ Experimental Verification
+  Q   Algorithm                       Time                     Space
+  --- ------------------------------- ------------------------ ----------------
+  1   Growth ordering using `qsort`   Θ(F log F), F=12         Θ(F)
+  2   Coin toss simulation            Θ(n)                     Θ(1)
+  3   Early-exit bubble sort          Ω(n) best, O(n²) worst   Θ(1)
+  3   Full-pass bubble sort           Θ(n²)                    Θ(1)
+  4   Towers of Hanoi                 Θ(2\^n)                  Θ(n) recursion
+  5   Linear partition search         Θ(n)                     Θ(1)
+  5   Binary partition search         Θ(log n)                 Θ(1)
+  6   Brute-force uniqueness          O(n²)                    Θ(1)
+  6   Sort and scan                   Θ(n log n)               Θ(n)
+  6   Hashing                         Θ(n) average             Θ(n)
 
----
+------------------------------------------------------------------------
 
+# DAA Lab 02
 
+> Dictionary operations, merge-sort variants, and efficient merging of
+> multiple sorted arrays.
 
-#  Contributions
+## Q1 --- Dictionary Operations
 
-This repository is maintained as part of my academic coursework. Suggestions and improvements are always welcome. Feel free to fork the repository, raise issues, or submit pull requests for enhancements.
+Analyse these seven dictionary operations:
 
----
+-   Search
+-   Insert
+-   Delete
+-   Maximum
+-   Minimum
+-   Predecessor
+-   Successor
+
+for:
+
+-   Unsorted array
+-   Sorted array
+-   Singly linked unsorted list
+-   Singly linked sorted list
+-   Doubly linked unsorted list
+-   Doubly linked sorted list
+
+### Complexity Summary
+
+  ----------------------------------------------------------------------------
+  Data              Search       Insert       Delete    Min / Max      Pred. /
+  Structure                                                              Succ.
+  ----------- ------------ ------------ ------------ ------------ ------------
+  Unsorted            O(n)         O(1)         O(n)         O(n)         O(n)
+  Array                                                           
+
+  Sorted          O(log n)         O(n)         O(n)         O(1)         O(1)
+  Array                                                           
+
+  Singly              O(n)         O(1)         O(n)         O(n)         O(n)
+  Linked                                                          
+  Unsorted                                                        
+
+  Singly              O(n)         O(n)         O(n)  O(1) / O(n)         O(n)
+  Linked                                                          
+  Sorted                                                          
+
+  Doubly              O(n)         O(1)         O(n)         O(n)         O(n)
+  Linked                                                          
+  Unsorted                                                        
+
+  Doubly              O(n)         O(n)         O(n)  O(1) / O(n)         O(n)
+  Linked                                                          
+  Sorted                                                          
+  ----------------------------------------------------------------------------
+
+The exact linked-list complexity depends on implementation details and
+maintained references; the table reflects the straightforward
+implementations used for the lab.
+
+**Files**
+
+``` text
+dictionary.c
+dictionary.dat
+dictionary.gnu
+dictionary_complexity.png
+```
+
+## Q2 --- Merge Sort vs Modified Merge Sort
+
+### Standard Merge Sort
+
+The array is divided into two parts:
+
+``` text
+T(n) = 2T(n/2) + O(n)
+```
+
+Therefore:
+
+``` text
+O(n log2 n)
+```
+
+### Modified Three-Way Merge Sort
+
+The assignment specifies:
+
+1.  Divide the array into three parts.
+2.  Recursively sort each third.
+3.  Combine the results using a three-way merge.
+
+Recurrence:
+
+``` text
+T(n) = 3T(n/3) + O(n)
+```
+
+Therefore:
+
+``` text
+O(n log3 n)
+```
+
+Since changing the logarithm base changes only a constant factor:
+
+``` text
+O(n log3 n) = O(n log n)
+```
+
+Thus, both algorithms have the same asymptotic complexity, although
+their measured execution times can differ.
+
+The C program:
+
+-   Generates random input.
+-   Gives both algorithms equivalent input.
+-   Runs standard Merge Sort.
+-   Runs modified three-way Merge Sort.
+-   Measures time using `clock()`.
+-   Writes results to `merge.dat`.
+
+**Files**
+
+``` text
+merge.c
+merge.dat
+merge.gnu
+merge_sort_comparison.png
+```
+
+## Q3 --- Merging `k` Sorted Arrays
+
+Assume there are `k` sorted arrays, each containing `n` elements.
+
+### Method 1 --- Sequential Merge
+
+Merge the first two arrays, then merge the result with the third, and
+continue.
+
+Work:
+
+``` text
+2n + 3n + ... + kn
+```
+
+Therefore:
+
+``` text
+O(nk²)
+```
+
+### Method 2 --- Pairwise Merge
+
+Merge arrays in pairs and repeat:
+
+``` text
+A1 + A2    A3 + A4    A5 + A6    A7 + A8
+    ↓          ↓          ↓          ↓
+       A12 + A34       A56 + A78
+              ↓             ↓
+             A1234 + A5678
+                    ↓
+               Final Array
+```
+
+Each level processes all `kn` elements and there are approximately
+`log2(k)` levels.
+
+Therefore:
+
+``` text
+O(nk log k)
+```
+
+  Method     Strategy               Worst-Case Time
+  ---------- -------------------- -----------------
+  Method 1   Sequential merging              O(nk²)
+  Method 2   Pairwise merging           O(nk log k)
+
+Method 2 becomes increasingly advantageous as `k` grows.
+
+**Files**
+
+``` text
+merging_k_arrays.c
+merging_k.dat
+merging_k.gnu
+merging_k_comparison.png
+```
+
+## Lab 02 Complexity Summary
+
+  ---------------------------------------------------------------------------
+  Q                 Algorithm         Worst-Case Time       Extra Space
+  ----------------- ----------------- --------------------- -----------------
+  1                 Dictionary        Depends on            Depends on
+                    operations        structure/operation   implementation
+
+  2                 Standard Merge    O(n log n)            O(n)
+                    Sort                                    
+
+  2                 Modified 3-Way    O(n log n)            O(n)
+                    Merge Sort                              
+
+  3                 Sequential k-way  O(nk²)                O(nk)
+                    merging                                 
+
+  3                 Pairwise k-way    O(nk log k)           O(nk)
+                    merging                                 
+  ---------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+# Topics Covered
+
+### Analysis
+
+-   [x] Asymptotic notation --- Θ, O, Ω
+-   [x] Ordering functions by growth rate
+-   [x] Polynomial, superpolynomial, and exponential growth
+-   [x] Constant factors
+-   [x] Best-case and worst-case analysis
+-   [x] Primitive operation counting
+-   [x] Empirical order-of-growth analysis
+-   [x] Divide-and-conquer recurrences
+-   [x] Master theorem
+
+### Algorithms
+
+-   [x] `qsort`
+-   [x] Bubble sort and early termination
+-   [x] Binary search
+-   [x] Brute-force uniqueness checking
+-   [x] Sort-and-scan uniqueness checking
+-   [x] Hashing
+-   [x] Recursion
+-   [x] Dictionary operations
+-   [x] Merge Sort
+-   [x] Three-Way Merge Sort
+-   [x] Sequential k-way merging
+-   [x] Pairwise k-way merging
+
+### Randomisation and Recurrences
+
+-   [x] Monte Carlo simulation
+-   [x] Law of large numbers
+-   [x] Biased sampling
+-   [x] `T(n) = 2T(n−1) + 1`
+-   [x] Closed-form verification
+-   [x] Divide-and-conquer recurrences
+
+------------------------------------------------------------------------
+
+# Technologies Used
+
+  Tool                           Purpose
+  ------------------------------ -------------------------------------------
+  C (C99 / C11)                  Implementation
+  GCC                            Compilation
+  C standard library             `stdio.h`, `stdlib.h`, `math.h`, `time.h`
+  Python + matplotlib + pandas   Lab 01 plots
+  GNUPlot                        Lab 02 plots
+  CSV / DAT                      Experimental data
+  VS Code + WSL                  Development
+  Git + GitHub                   Version control
+
+------------------------------------------------------------------------
+
+# Compilation and Execution
+
+Recommended compiler command:
+
+``` bash
+gcc -std=c11 -Wall -Wextra -O2 file.c -o output -lm
+```
+
+### Lab 01
+
+``` bash
+cd DAA_Lab_01/Q1_Putting_them_in_order
+gcc -O2 -o Q1 Q1_order_of_growth.c -lm && ./Q1
+
+cd ../Q2_Fair_vs_Biased_Coin
+gcc -o Q2 Q2_coin_toss.c && ./Q2
+
+cd ../Q3_Performance_Analysis_of_bubble_sort
+gcc -o Q3 Q3_bubble_sort.c && ./Q3
+
+cd ../Q4_Tower_of_Hanoi
+gcc -o Q4 Q4_tower_of_hanoi.c && ./Q4
+
+cd ../Q5_Find_the_partition_point
+gcc -o Q5 Q5_partition_point.c && ./Q5
+
+cd ../Q6_Element_uniqueness
+gcc -O2 -o Q6 Q6_element_uniqueness.c && ./Q6
+```
+
+### Lab 02
+
+``` bash
+cd DAA_Lab_02/Q1_Dictionary_Operations
+gcc -std=c11 -Wall -Wextra -O2 dictionary.c -o dictionary
+./dictionary
+
+cd ../Q2_Merge_Sort_vs_Modified_Merge_Sort
+gcc -std=c11 -Wall -Wextra -O2 merge.c -o merge
+./merge
+
+cd ../Q3_Merging_k_Sorted_Arrays
+gcc -std=c11 -Wall -Wextra -O2 merging_k_arrays.c -o merging_k_arrays
+./merging_k_arrays
+```
+
+On Windows/MinGW-w64, run the generated `.exe` files.
+
+------------------------------------------------------------------------
+
+# Plot Generation
+
+## Lab 01 --- Python / Matplotlib
+
+From `DAA_Lab_01`:
+
+``` bash
+pip install pandas matplotlib --break-system-packages
+python3 generate_plots.py
+```
+
+## Lab 02 --- GNUPlot
+
+``` bash
+cd DAA_Lab_02/Q1_Dictionary_Operations
+gnuplot -persist dictionary.gnu
+
+cd ../Q2_Merge_Sort_vs_Modified_Merge_Sort
+gnuplot -persist merge.gnu
+
+cd ../Q3_Merging_k_Sorted_Arrays
+gnuplot -persist merging_k.gnu
+```
+
+Plots should clearly show input size, measured quantity, algorithm
+names, and relevant complexity. If a logarithmic axis is used, it should
+be explicitly labelled.
+
+------------------------------------------------------------------------
+
+# Experimental Notes
+
+Execution times depend on processor speed, current system load, compiler
+optimisation, operating system, random input, and input size. Individual
+timing values should therefore not be treated as universal constants.
+
+The goal is to observe **order of growth** and compare measured
+behaviour with theoretical complexity.
+
+For fair comparisons, algorithms being compared should receive
+equivalent input data whenever possible.
+
+------------------------------------------------------------------------
+
+# Repository Conventions
+
+-   One top-level folder per lab: `DAA_Lab_<nn>`.
+-   One subfolder per question.
+-   Question folders use `Q<number>_<question_title>`.
+-   Source files use descriptive names.
+-   Generated data stays with the program that created it.
+-   GNUPlot scripts stay with their corresponding `.dat` files.
+-   PNG plots stay with the corresponding experiment.
+-   Plots should label axes, algorithms, and relevant complexity.
+-   Recommended flags:
+
+``` bash
+gcc -std=c11 -Wall -Wextra -O2 file.c -o output -lm
+```
+
+------------------------------------------------------------------------
 
 # License
 
-This project is licensed under the **MIT License**.
+Coursework for educational purposes. Feel free to read, run, and learn
+from the implementations; please do not submit the repository as someone
+else's work.
 
-You are free to use the code for learning purposes. If you use any part of this repository, kindly provide appropriate credit.
-
----
-
-<div align="center">
-
-### If you found this repository useful, consider giving it a star!
-
-
-
-</div>
+```{=html}
+<p align="center">
+```
+Maintained by `<strong>`{=html}Anurag`</strong>`{=html} · CE, IIIT
+Bhubaneswar
+```{=html}
+</p>
+```
