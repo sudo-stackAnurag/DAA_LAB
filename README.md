@@ -118,67 +118,603 @@ DAA_LAB/
 
 ---
 
-# LAB_5
+# LAB_5 — Selection and Sorting Algorithms
 
-> Selection algorithms and comparison-based sorting techniques.
+This lab contains C implementations of selection algorithms and comparison-based sorting algorithms.
 
-| # | Question | Description | File |
-|---|---|---|---|
-| 1 | Median of Elements | Finds the median using a QuickSelect-based approach. | [median.c](LAB_5/Q1/median.c) |
-| 2 | K-th Smallest Element | Finds the K-th smallest element using QuickSelect. | [k_element.c](LAB_5/Q2/k_element.c) |
-| 3 | Heap Sort | Generates elements, sorts them using heap sort, and stores input and output in files. | [heapsort.c](LAB_5/Q3/heapsort.c) |
-| 4 | Quick Sort | Generates elements, sorts them using quicksort, and stores input and output in files. | [quicksort.c](LAB_5/Q4/quicksort.c) |
+## Requirements
 
-### LAB_5 Files
+- C compiler such as GCC
+- Standard C library
+- Terminal/Command Prompt
 
-```text
-LAB_5/
-├── Q1/
-│   ├── median.c
-│   └── median.exe
-├── Q2/
-│   ├── k_element.c
-│   └── k_element.exe
-├── Q3/
-│   ├── heapsort.c
-│   ├── input2.txt
-│   └── sorted2.txt
-└── Q4/
-    ├── quicksort.c
-    ├── input.txt
-    └── sorted.txt
+Compile a program using:
+
+```bash
+gcc program.c -o program
+```
+
+Run it using:
+
+```bash
+./program
+```
+
+On Windows:
+
+```bash
+program.exe
 ```
 
 ---
 
-# LAB_6
+# Application I — Median of Elements
 
-> Array and matrix operations, FFT-based convolution, and sorting through reversal operations.
+## Problem
 
-| # | Question | Description | File |
-|---|---|---|---|
-| 1 | 1D Array Operations and Complexities | Performs maximum, largest elements, mean, median, standard deviation, mode, duplicate removal, reversal, and partitioning operations. | [1Darray.c](LAB_6/1.%201D%20array%20operations%20and%20their%20complexities/1Darray.c) |
-| 2 | 2D Square Matrix Operations and Complexities | Performs matrix addition, multiplication, zero/symmetry checks, determinant calculation, transpose, and dominant eigenvalue/eigenvector computation. | [2Dmatrix.c](LAB_6/2.%202D%20square%20matrix%20operations%20and%20their%20complexities/2Dmatrix.c) |
-| 3 | Convolution Operation on Vectors of Size n | Computes vector convolution using an FFT-based approach. | [FTT.c](LAB_6/3.%20Convolution%20operation%20on%20vectors%20of%20size%20n/FTT.c) |
-| 4 | Sorting via Reversal Procedure | Sorts a permutation using recursive stable partitioning and reversal operations. | [reversal.c](LAB_6/4.%20Sorting%20via%20reversal%20procedure/reversal.c) |
+Given `n` unsorted elements, find their median without completely sorting the array.
 
-### LAB_6 Files
+For an odd number of elements, the median is the middle element in sorted order. For an even number of elements, the median is the average of the two middle elements.
+
+## Algorithm
+
+The program uses the **QuickSelect** approach:
+
+1. Choose the last element as a pivot.
+2. Partition the array so that elements less than or equal to the pivot are placed before it.
+3. If the pivot reaches the required index, return it.
+4. Otherwise, recursively continue in the appropriate partition.
+
+For an even-sized array, the program finds both middle elements. Since QuickSelect modifies the array, the original array is restored before finding the second middle element.
+
+## Complexity
 
 ```text
-LAB_6/
-├── 1. 1D array operations and their complexities/
-│   └── 1Darray.c
-├── 2. 2D square matrix operations and their complexities/
-│   └── 2Dmatrix.c
-├── 3. Convolution operation on vectors of size n/
-│   └── FTT.c
-└── 4. Sorting via reversal procedure/
-    └── reversal.c
+Average Time: O(n)
+Worst Case:   O(n²)
+Space:        O(log n) recursion stack on average
+```
+
+## Example
+
+```text
+Input:
+1 7 3 9 5
+
+Sorted order:
+1 3 5 7 9
+
+Median = 5
+```
+
+For an even-sized input:
+
+```text
+Input:
+1 7 3 9
+
+Sorted order:
+1 3 7 9
+
+Median = (3 + 7) / 2 = 5.00
 ```
 
 ---
 
-## Complexity Summary
+# Application II — K-th Smallest Element
+
+## Problem
+
+Given an unsorted array containing `n` elements and an integer `k`, find the `k`-th smallest element.
+
+The valid range is:
+
+```text
+1 <= k <= n
+```
+
+## Algorithm
+
+The program uses **QuickSelect**:
+
+1. Partition the array around a pivot.
+2. Determine the pivot's final position.
+3. If the pivot position is `k - 1`, the required element has been found.
+4. Otherwise, recursively search the left or right partition.
+
+## Complexity
+
+```text
+Average Time: O(n)
+Worst Case:   O(n²)
+```
+
+## Example
+
+```text
+Array = {7, 10, 4, 3, 20, 15}
+k = 3
+```
+
+Sorted order:
+
+```text
+3 4 7 10 15 20
+```
+
+Therefore:
+
+```text
+3rd smallest element = 7
+```
+
+## Validation
+
+The program validates that:
+
+```text
+1 <= k <= n
+```
+
+If `k` is outside this range, the program prints:
+
+```text
+Invalid value of K
+```
+
+---
+
+# Application III — Heap Sort
+
+## Problem
+
+Generate `n` random integers, store them in a file, read them into an array, and sort them using **Heap Sort**.
+
+The program stores:
+
+```text
+Original random elements → input2.txt
+Sorted elements          → sorted2.txt
+```
+
+## Algorithm
+
+1. Build a **Max Heap** from the array.
+2. Swap the root with the last element.
+3. Reduce the heap size.
+4. Restore the Max Heap property using `heapify`.
+5. Repeat until the array is sorted.
+
+## Complexity
+
+```text
+Build Heap: O(n)
+Heap Sort:  O(n log n)
+Total:      O(n log n)
+Space:      O(1) auxiliary space
+```
+
+## Example
+
+```text
+Original elements:
+42 15 87 23 9
+```
+
+After Heap Sort:
+
+```text
+9 15 23 42 87
+```
+
+The exact elements may differ because the program generates random values.
+
+---
+
+# Application IV — Quick Sort
+
+## Problem
+
+Generate `n` random integers, store them in a file, read them into an array, and sort them using **Quick Sort**.
+
+The program stores:
+
+```text
+Original random elements → input.txt
+Sorted elements          → sorted.txt
+```
+
+## Algorithm
+
+1. Select the last element as the pivot.
+2. Partition the array around the pivot.
+3. Recursively sort the left partition.
+4. Recursively sort the right partition.
+
+## Complexity
+
+```text
+Best / Average Case: O(n log n)
+Worst Case:          O(n²)
+Average Space:       O(log n) recursion stack
+```
+
+## Example
+
+```text
+Original elements:
+64 21 8 93 45
+```
+
+After Quick Sort:
+
+```text
+8 21 45 64 93
+```
+
+The exact elements may differ because the program generates random values.
+
+---
+
+# LAB_5 Summary
+
+| Application | Main Technique | Time Complexity |
+|---|---|---|
+| I. Median of Elements | QuickSelect | Average **O(n)** |
+| II. K-th Smallest Element | QuickSelect | Average **O(n)** |
+| III. Heap Sort | Heap construction + Heapify | **O(n log n)** |
+| IV. Quick Sort | Partition + Recursion | Average **O(n log n)** |
+
+---
+
+# LAB_6 — Array, Matrix and Advanced Operations
+
+This lab contains implementations of one-dimensional array operations, two-dimensional matrix operations, convolution using the Fast Fourier Transform, and sorting through reversal procedures.
+
+## Requirements
+
+- C compiler such as GCC
+- Standard C library
+- Math library for programs using mathematical functions
+- Terminal/Command Prompt
+
+Compile programs requiring the math library using:
+
+```bash
+gcc program.c -o program -lm
+```
+
+Run using:
+
+```bash
+./program
+```
+
+---
+
+# Application I — 1D Array Operations and Their Complexities
+
+## Problem
+
+Given an unsorted one-dimensional array, perform the following operations:
+
+```text
+(i)   Find the maximum element
+(ii)  Find the first and second largest elements
+(iii) Calculate the mean
+(iv)  Calculate the median
+(v)   Calculate the standard deviation
+(vi)  Find the mode
+(vii) Remove duplicates
+(viii) Reverse the array
+(ix)  Partition the array using a pivot
+```
+
+## Algorithm
+
+The program uses different techniques for each operation:
+
+- A linear scan for the maximum element.
+- A single traversal for the largest and second-largest elements.
+- Summation for the mean.
+- A copied array and sorting for the median.
+- The population standard deviation formula.
+- Nested loops to count occurrences for the mode.
+- Linear duplicate checking to remove repeated values.
+- Two pointers to reverse the array.
+- Two pointers to partition the array around a pivot.
+
+## Complexity
+
+| Operation | Time Complexity |
+|---|---|
+| Maximum | **O(n)** |
+| Largest Two | **O(n)** |
+| Mean | **O(n)** |
+| Median | **O(n log n)** due to sorting |
+| Standard Deviation | **O(n)** |
+| Mode | **O(n²)** |
+| Remove Duplicates | **O(n²)** |
+| Reverse Array | **O(n)** |
+| Partition | **O(n)** |
+
+## Example
+
+```text
+Array = {4, 2, 7, 2, 9, 4}
+
+Maximum = 9
+First Largest = 9
+Second Largest = 7
+Mean = 4.67
+Median = 4.00
+Mode = 4 or 2 depending on first maximum frequency encountered
+```
+
+After removing duplicates:
+
+```text
+4 2 7 9
+```
+
+After reversing:
+
+```text
+9 7 2 4
+```
+
+---
+
+# Application II — 2D Square Matrix Operations and Their Complexities
+
+## Problem
+
+Given two square matrices `A` and `B` of order `n`, perform the following operations:
+
+```text
+(i)   Matrix Addition
+(ii)  Matrix Multiplication
+(iii) Check whether Matrix A is a Zero Matrix
+(iv)  Check whether matrices are Symmetric
+(v)   Find the Determinant of Matrix A
+(vi)  Find the Transpose of Matrix A
+(vii) Find the Dominant Eigenvalue and Eigenvector of Matrix B
+```
+
+## Algorithm
+
+The program uses:
+
+- Nested loops for matrix addition and multiplication.
+- Element scanning to check for a zero matrix.
+- Comparison across the main diagonal to check symmetry.
+- Gaussian elimination with pivoting for the determinant.
+- In-place swapping across the main diagonal for the transpose.
+- An iterative power-method style calculation for the dominant eigenvalue and eigenvector.
+
+## Complexity
+
+| Operation | Time Complexity |
+|---|---|
+| Matrix Addition | **O(n²)** |
+| Matrix Multiplication | **O(n³)** |
+| Zero Matrix Check | **O(n²)** |
+| Symmetry Check | **O(n²)** |
+| Determinant | **O(n³)** |
+| Transpose | **O(n²)** |
+| Dominant Eigenvalue/Eigenvector | **O(ITER × n²)** |
+
+## Example
+
+```text
+A = [1 2]
+    [3 4]
+
+B = [5 6]
+    [7 8]
+```
+
+Matrix addition:
+
+```text
+6  8
+10 12
+```
+
+Matrix multiplication:
+
+```text
+19 22
+43 50
+```
+
+---
+
+# Application III — Convolution Operation on Vectors of Size n
+
+## Problem
+
+Given two vectors `A` and `B`, compute their convolution efficiently.
+
+The program requires:
+
+```text
+size(A) <= size(B)
+```
+
+The resulting convolution contains:
+
+```text
+m + n - 1
+```
+
+elements, where `m` and `n` are the sizes of the two vectors.
+
+## Algorithm
+
+The program uses the **Fast Fourier Transform (FFT)**:
+
+1. Find the next power of two greater than or equal to `m + n - 1`.
+2. Pad both vectors with zeros.
+3. Apply FFT to both vectors.
+4. Multiply corresponding complex values.
+5. Apply the inverse FFT.
+6. Print the resulting convolution values.
+
+## Complexity
+
+```text
+FFT of each vector: O(N log N)
+Pointwise multiply:  O(N)
+Inverse FFT:         O(N log N)
+
+Total: O(N log N)
+```
+
+where `N` is the next power of two greater than or equal to the convolution size.
+
+## Example
+
+```text
+A = {1, 2, 3}
+B = {4, 5, 6}
+```
+
+Convolution:
+
+```text
+4 13 28 27 18
+```
+
+---
+
+# Application IV — Sorting via Reversal Procedure
+
+## Problem
+
+Given a permutation of integers from `1` to `n`, sort the permutation using reversal operations.
+
+The program also reports:
+
+```text
+Number of reversals
+Total reversal cost
+```
+
+## Algorithm
+
+The program recursively divides the value range using a pivot.
+
+For each recursive step:
+
+1. Stably partition the permutation into elements less than or equal to the pivot and elements greater than the pivot.
+2. Use reversals to rotate the required subarrays.
+3. Recursively sort the two resulting partitions.
+
+The stable partition operation transforms:
+
+```text
+L1 H1 L2 H2
+```
+
+into:
+
+```text
+L1 L2 H1 H2
+```
+
+using three reversals when both groups are present.
+
+## Complexity
+
+The implementation tracks the number and total cost of reversal operations. The exact running time depends on the recursive partitions and the lengths of the reversals performed.
+
+## Example
+
+```text
+Original permutation:
+3 1 4 2
+```
+
+After sorting:
+
+```text
+1 2 3 4
+```
+
+The program additionally displays the number of reversals and the total reversal cost for the given input.
+
+---
+
+# LAB_6 Summary
+
+| Application | Main Technique | Typical Time Complexity |
+|---|---|---|
+| I. 1D Array Operations | Linear scans, sorting and nested loops | Varies by operation |
+| II. 2D Matrix Operations | Matrix algorithms and iterative methods | Varies from **O(n²)** to **O(n³)** |
+| III. Vector Convolution | Fast Fourier Transform | **O(N log N)** |
+| IV. Sorting by Reversal | Recursive stable partitioning | Depends on reversal operations |
+
+---
+
+# Common Implementation Details
+
+The LAB_5 and LAB_6 programs use arrays, recursion, structures, pointers, dynamic memory allocation, and standard C library functions where required.
+
+### QuickSelect
+
+Used in LAB_5 Applications I and II:
+
+```text
+Partition
+   ↓
+Locate pivot position
+   ↓
+Search required partition
+```
+
+### Heap Sort
+
+Used in LAB_5 Application III:
+
+```text
+Build Max Heap
+   ↓
+Move maximum to the end
+   ↓
+Heapify remaining elements
+```
+
+### FFT
+
+Used in LAB_6 Application III:
+
+```text
+Divide into even and odd terms
+   ↓
+Recursively compute FFT
+   ↓
+Combine results
+```
+
+### Reversal
+
+Used in LAB_6 Application IV to rearrange subarrays while performing stable partitioning.
+
+---
+
+# Validation and Conditions
+
+The programs include conditions and checks appropriate to their implementations, such as:
+
+- `1 <= k <= n` for the K-th smallest element problem.
+- LAB_6 convolution requires the first vector size to be less than or equal to the second vector size.
+- LAB_6 reversal sorting expects a permutation of values from `1` to `n`.
+- File operations in Heap Sort and Quick Sort are checked for file-opening errors.
+
+---
+
+# Overall Complexity Summary
 
 | Lab | Algorithm / Topic | Typical Time Complexity |
 |---|---|---|
@@ -196,78 +732,33 @@ LAB_6/
 
 ---
 
-## Topics Covered
+# Conclusion
 
-### Algorithm Analysis
-- Asymptotic notation — O, Ω and Θ
-- Growth of functions
-- Best-case and worst-case analysis
-- Empirical performance analysis
+The DAA laboratory assignments in this repository demonstrate a variety of fundamental algorithmic techniques.
 
-### Searching and Sorting
-- Bubble Sort
-- Merge Sort
-- Binary Search
-- Ternary Search
-- Heap Sort
-- Quick Sort
-- QuickSelect
-- Sorting applications
+The major techniques used include:
 
-### Divide and Conquer
-- Towers of Hanoi
-- Defective Coin Problem
-- Maximum and Minimum
-- Strassen's Matrix Multiplication
-- Special-pattern matrices
+```text
+LAB_1
+→ Growth analysis and basic algorithms
 
-### Advanced Applications
-- Interval merging and overlap detection
-- Event processing
-- K-th smallest element
-- Median selection
-- Matrix operations
-- FFT-based convolution
-- Sorting through reversal procedures
+LAB_2
+→ Merge Sort and dictionary operations
 
----
+LAB_3
+→ Divide and Conquer
 
-## Compilation and Execution
+LAB_4
+→ Sorting-based applications
 
-Compile individual programs using GCC:
+LAB_5
+→ Selection, Heap Sort and Quick Sort
 
-```bash
-gcc filename.c -o program
-./program
+LAB_6
+→ Array and matrix operations, FFT, and reversal-based sorting
 ```
 
-Some programs require the math library:
-
-```bash
-gcc filename.c -o program -lm
-./program
-```
-
-### Examples
-
-```bash
-# LAB_5
-cd LAB_5/Q1
-gcc median.c -o median
-./median
-
-# LAB_6
-cd "LAB_6/1. 1D array operations and their complexities"
-gcc 1Darray.c -o 1Darray -lm
-./1Darray
-```
-
-On Windows with MinGW:
-
-```bash
-gcc filename.c -o program.exe
-program.exe
-```
+Together, these laboratory assignments demonstrate how appropriate data representations and algorithmic techniques can be used to solve a wide range of computational problems efficiently.
 
 ---
 
