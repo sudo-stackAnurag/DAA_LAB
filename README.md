@@ -37,11 +37,11 @@ Most of these questions ask for more than "does it run" — they ask what happen
 ## About the Repository
 
 - Written entirely in **C**, compiled with **GCC**.
-- One top-level folder per lab (`LAB_1`, `LAB_2`, `LAB_3`).
-- Inside each lab folder, one subfolder per question, named after the question itself (e.g. `1. Put them in Order`, `4. Towers of Hanoi`), holding that question's source file plus generated data and plots where applicable.
-- File names describe the problem, such as `growth.c`, `bubble.c`, `TOH.c`, and `BTsearch.c`.
-- Programs that study growth or performance write their measurements to a **DAT** file inside their own question folder, which is then plotted and committed as a **PNG** next to it.
-- Plots are generated with **Gnuplot** scripts (`.gnu`) stored alongside the experimental data and output plots, so the graphs can be regenerated from the committed data.
+- One top-level folder per lab (`LAB_1`, `LAB_2`, `LAB_3`, `LAB_4`).
+- Inside each lab folder, one subfolder per question, named after the question itself, holding that question's source file plus generated data and plots where applicable.
+- File names describe the problem, such as `growth.c`, `bubble.c`, `TOH.c`, `BTsearch.c`, and `color_sort.c`.
+- Programs that study growth or performance write their measurements to a **DAT** file inside their own question folder, which is then plotted and committed as a **PNG** next to it where applicable.
+- Plots are generated with **Gnuplot** scripts (`.gnu`) stored alongside the experimental data and output plots, so the graphs can be regenerated from the committed data where applicable.
 - No external C libraries — only the C standard library (`stdio.h`, `stdlib.h`, `math.h`, `time.h`).
 
 ---
@@ -112,35 +112,60 @@ DAA_LAB/
 │       ├── merging_k.gnu
 │       └── merging_k_comparison.png
 │
-└── LAB_3/
-    ├── 1. Binary vs Ternary Search/
-    │   ├── BTsearch.c
-    │   ├── BTsearch.exe
-    │   ├── plot.gnu
-    │   └── search_data.dat
+├── LAB_3/
+│   ├── 1. Binary vs Ternary Search/
+│   │   ├── BTsearch.c
+│   │   ├── BTsearch.exe
+│   │   ├── plot.gnu
+│   │   └── search_data.dat
+│   │
+│   ├── 2. Search the Defective Coin/
+│   │   ├── Dcoin.c
+│   │   ├── Dcoin.exe
+│   │   ├── Dcoin.gnu
+│   │   └── data.dat
+│   │
+│   ├── 3. Max and Min using D&C Approach/
+│   │   ├── minmax.c
+│   │   └── minmax.exe
+│   │
+│   ├── 4. Matrix Multiplication using D&C Approach/
+│   │   ├── strassen.c
+│   │   └── strassen.exe
+│   │
+│   ├── 5. Multiply special-pattern square matrices using D&C approach/
+│   │   ├── specialmat.c
+│   │   ├── specialmat.exe
+│   │   └── specialmat.gnu
+│   │
+│   └── 6. Use of loop invariants in sorting/
+│       ├── loopsorting.c
+│       └── loopsorting.exe
+│
+└── LAB_4/
+    ├── 1. Application of sorting-I/
+    │   ├── color_sort.c
+    │   └── colorsort.exe
     │
-    ├── 2. Search the Defective Coin/
-    │   ├── Dcoin.c
-    │   ├── Dcoin.exe
-    │   ├── Dcoin.gnu
-    │   └── data.dat
+    ├── 2. Application of sorting-II/
+    │   ├── add_pair_sort.c
+    │   └── addpairsort.exe
     │
-    ├── 3. Max and Min using D&C Approach/
-    │   ├── minmax.c
-    │   └── minmax.exe
+    ├── 3. Application of sorting-III/
+    │   ├── add_upto_T.c
+    │   └── addT.exe
     │
-    ├── 4. Matrix Multiplication using D&C Approach/
-    │   ├── strassen.c
-    │   └── strassen.exe
+    ├── 4. Application of sorting-IV/
+    │   ├── door_tracks.c
+    │   └── doortrack.exe
     │
-    ├── 5. Multiply special-pattern square matrices using D&C approach/
-    │   ├── specialmat.c
-    │   ├── specialmat.exe
-    │   └── specialmat.gnu
+    ├── 5. Application of sorting-V/
+    │   ├── overlapping_set.c
+    │   └── overlapping.exe
     │
-    └── 6. Use of loop invariants in sorting/
-        ├── loopsorting.c
-        └── loopsorting.exe
+    └── 6. Application of sorting-VI/
+        ├── common_point.c
+        └── commonpoint.exe
 ```
 
 ---
@@ -152,6 +177,7 @@ DAA_LAB/
 | Lab 01 | Growth of functions, empirical analysis, recurrences     | 6 | [LAB_1](LAB_1) |
 | Lab 02 | Dictionary operations, merge sort variants, k-way merging | 3 | [LAB_2](LAB_2) |
 | Lab 03 | Divide and conquer algorithms and loop invariants | 6 | [LAB_3](LAB_3) |
+| Lab 04 | Applications of sorting | 6 | [LAB_4](LAB_4) |
 
 ---
 
@@ -219,9 +245,32 @@ The special-pattern matrix problem goes one step further by exploiting additiona
 
 ---
 
+## LAB_4
+
+> Applications of sorting: colour-based ordering, pair-sum search, k-element sum, event tracking, interval merging, and maximum-overlap point detection.
+
+| #   | Question                 | Description                                                                                                             | File |
+| --- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------- | ---- |
+| 1   | Application of sorting-I | Given pairs containing a number and a colour, validate the numeric order and arrange the pairs by colour.              | [Q1/color_sort.c](LAB_4/1.%20Application%20of%20sorting-I/color_sort.c) |
+| 2   | Application of sorting-II | Given two sets and a target `x`, sort one set and use binary search to determine whether a pair sums to `x`.          | [Q2/add_pair_sort.c](LAB_4/2.%20Application%20of%20sorting-II/add_pair_sort.c) |
+| 3   | Application of sorting-III | Given a set, `k`, and target `T`, sort the set and determine whether `k` elements add up to `T`.                       | [Q3/add_upto_T.c](LAB_4/3.%20Application%20of%20sorting-III/add_upto_T.c) |
+| 4   | Application of sorting-IV | Given entry and exit times, sort the events and determine the maximum number of people present and when it occurs.   | [Q4/door_tracks.c](LAB_4/4.%20Application%20of%20sorting-IV/door_tracks.c) |
+| 5   | Application of sorting-V | Sort intervals by their starting point and merge overlapping intervals into a non-overlapping set.                    | [Q5/overlapping_set.c](LAB_4/5.%20Application%20of%20sorting-V/overlapping_set.c) |
+| 6   | Application of sorting-VI | Process interval endpoints as sorted events to find the point with the maximum number of overlapping intervals.       | [Q6/common_point.c](LAB_4/6.%20Application%20of%20sorting-VI/common_point.c) |
+
+---
+
+## Highlight — Sorting becomes a building block
+
+Lab 4 demonstrates that sorting is often not the final objective of an algorithm. Instead, sorting can transform a problem so that another operation becomes efficient: binary search after sorting, recursive selection of elements, sweep-line processing of events, and linear merging of overlapping intervals.
+
+The implementations in this lab repeatedly use merge sort to order the relevant records or values before applying the problem-specific logic. citeturn33file0turn34file0turn35file0turn36file0turn37file0
+
+---
+
 ## Results and Artifacts
 
-The simulation and measurement programs export their data; the plots are committed next to them inside their own question folder.
+The simulation and measurement programs export their data; the plots are committed next to them inside their own question folder where applicable.
 
 | Data | Plot | Produced by | What it shows |
 | --- | --- | --- | --- |
@@ -269,6 +318,17 @@ The simulation and measurement programs export their data; the plots are committ
 | 5   | Special-pattern matrix multiplication            | Depends on the recursive representation | Depends on representation |
 | 6   | Sorting with loop invariant                      | Depends on the sorting algorithm | Depends on implementation |
 
+**LAB_4**
+
+| #   | Program                                      | Time                                      | Space |
+| --- | -------------------------------------------- | ----------------------------------------- | ----- |
+| 1   | Colour-based pair sorting                    | Θ(n)                                      | Θ(n)  |
+| 2   | Pair sum using merge sort + binary search    | Θ(n log n)                                | Θ(n)  |
+| 3   | k-element sum using sorting + recursive search | Depends on `k`; includes sorting and recursive search | Θ(n) plus recursion |
+| 4   | Maximum people present using event sorting   | Θ(n log n)                                | Θ(n)  |
+| 5   | Merge overlapping intervals                  | Θ(n log n)                                | Θ(n)  |
+| 6   | Maximum-overlap point using event sorting    | Θ(n log n)                                | Θ(n)  |
+
 ---
 
 ## Topics Covered
@@ -315,6 +375,15 @@ The simulation and measurement programs export their data; the plots are committ
 - [x] Strassen's matrix multiplication
 - [x] Special-pattern matrix multiplication
 - [x] Loop invariants — initialization, maintenance, termination
+
+**Applications of Sorting (LAB_4)**
+
+- [x] Sorting records by colour
+- [x] Pair-sum search using sorting and binary search
+- [x] k-element sum search
+- [x] Event sorting and sweep-line processing
+- [x] Merging overlapping intervals
+- [x] Finding a point of maximum interval overlap
 
 ---
 
@@ -393,6 +462,28 @@ cd '../6. Use of loop invariants in sorting'
 gcc -O2 -o Q6 loopsorting.c && ./Q6
 ```
 
+### LAB_4
+
+```bash
+cd 'LAB_4/1. Application of sorting-I'
+gcc -O2 -o Q1 color_sort.c && ./Q1
+
+cd '../2. Application of sorting-II'
+gcc -O2 -o Q2 add_pair_sort.c && ./Q2
+
+cd '../3. Application of sorting-III'
+gcc -O2 -o Q3 add_upto_T.c && ./Q3
+
+cd '../4. Application of sorting-IV'
+gcc -O2 -o Q4 door_tracks.c && ./Q4
+
+cd '../5. Application of sorting-V'
+gcc -O2 -o Q5 overlapping_set.c && ./Q5
+
+cd '../6. Application of sorting-VI'
+gcc -O2 -o Q6 common_point.c && ./Q6
+```
+
 Recommended flags while working:
 
 ```bash
@@ -413,10 +504,10 @@ gnuplot plot.gnu
 
 ## Repository Conventions
 
-- One top-level folder per lab, named `LAB_1`, `LAB_2`, and `LAB_3`, containing one subfolder per question.
+- One top-level folder per lab, named `LAB_1`, `LAB_2`, `LAB_3`, and `LAB_4`, containing one subfolder per question.
 - One subfolder per question, named after the question itself, holding that question's `.c` file plus anything it generates (DAT data, PNG plots, and Gnuplot scripts where applicable).
-- Sources are named according to the problem, such as `growth.c`, `merge_sort.c`, `BTsearch.c`, and `loopsorting.c`.
-- Generated data files keep the name of the analysis they describe, and their plots are stored alongside them.
+- Sources are named according to the problem, such as `growth.c`, `merge_sort.c`, `BTsearch.c`, `loopsorting.c`, and `color_sort.c`.
+- Generated data files keep the name of the analysis they describe, and their plots are stored alongside them where applicable.
 
 ---
 
