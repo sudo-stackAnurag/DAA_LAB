@@ -14,35 +14,21 @@
 
 ## Introduction
 
-This repository holds my solutions for the **Design and Analysis of Algorithms (DAA) Laboratory** at IIIT Bhubaneswar. Every lab session gets its own folder, and inside that, every question gets its own subfolder holding the source file for that question plus anything it generates (DAT data, PNG plots).
-
-Most of these questions ask for more than "does it run" — they ask what happens as `n` grows. So the programs here do two jobs: solve the problem, and instrument it — counting comparisons, counting moves, tabulating values across a range of `n` — then export that data so the growth can be plotted rather than just asserted.
+This repository contains my solutions for the **Design and Analysis of Algorithms (DAA) Laboratory**. Each lab has its own folder, with individual questions and their corresponding C source files, generated data, and supporting files where applicable.
 
 ---
 
 ## Student Information
 
-| Field      | Details                                      |
-| ---------- | -------------------------------------------- |
-| Name       | Anurag Samal                                 |
-| Student ID | B525009                                      |
-| Branch     | Computer Engineering (CE)                    |
-| Institute  | IIIT Bhubaneswar                             |
-| Course     | Design and Analysis of Algorithms Laboratory |
-| Semester   | B.Tech 3rd Semester                          |
-| Instructor | Dr. Ajaya Kumar Dash                         |
-
----
-
-## About the Repository
-
-- Written entirely in **C**, compiled with **GCC**.
-- One top-level folder per lab (`LAB_1`, `LAB_2`, `LAB_3`, `LAB_4`).
-- Inside each lab folder, one subfolder per question, named after the question itself, holding that question's source file plus generated data and plots where applicable.
-- File names describe the problem, such as `growth.c`, `bubble.c`, `TOH.c`, `BTsearch.c`, and `color_sort.c`.
-- Programs that study growth or performance write their measurements to a **DAT** file inside their own question folder, which is then plotted and committed as a **PNG** next to it where applicable.
-- Plots are generated with **Gnuplot** scripts (`.gnu`) stored alongside the experimental data and output plots, so the graphs can be regenerated from the committed data where applicable.
-- No external C libraries — only the C standard library (`stdio.h`, `stdlib.h`, `math.h`, `time.h`).
+| Field | Details |
+|---|---|
+| Name | Anurag Samal |
+| Student ID | B525009 |
+| Branch | Computer Engineering (CE) |
+| Institute | IIIT Bhubaneswar |
+| Course | Design and Analysis of Algorithms Laboratory |
+| Semester | B.Tech 3rd Semester |
+| Instructor | Dr. Ajaya Kumar Dash |
 
 ---
 
@@ -52,468 +38,254 @@ Most of these questions ask for more than "does it run" — they ask what happen
 DAA_LAB/
 │
 ├── README.md
-│
-├── LAB_1/
-│   ├── 1. Put them in Order/
-│   │   ├── growth.c
-│   │   ├── growth.dat
-│   │   ├── growth.exe
-│   │   ├── plot.gnu
-│   │   └── plot.png
-│   │
-│   ├── 2. Fair vs Biased coin/
-│   │   ├── coin.c
-│   │   ├── coin.dat
-│   │   ├── coin.exe
-│   │   ├── coin.gnu
-│   │   └── coin.png
-│   │
-│   ├── 3. Performance analysis of bubble sort/
-│   │   ├── bubble.c
-│   │   ├── bubble.dat
-│   │   ├── bubble.exe
-│   │   ├── bubble.gnu
-│   │   └── bubble.png
-│   │
-│   ├── 4. Towers of Hanoi/
-│   │   ├── TOH.c
-│   │   ├── TOH.exe
-│   │   ├── toh.dat
-│   │   ├── toh.gnu
-│   │   └── toh.png
-│   │
-│   ├── 5. Find the partition point/
-│   │   ├── partition.c
-│   │   └── partition.exe
-│   │
-│   └── 6. Element uniqueness/
-│       ├── unique.c
-│       └── unique.exe
-│
-├── LAB_2/
-│   ├── 1. Dictionary Operations/
-│   │   ├── dictionary_growth.c
-│   │   ├── dictionary.dat
-│   │   ├── dictionary.exe
-│   │   ├── dictionary.gnu
-│   │   └── dictionary_complexity.png
-│   │
-│   ├── 2. Merge sort vs Modified merge sort/
-│   │   ├── merge_sort.c
-│   │   ├── merge.dat
-│   │   ├── merge.exe
-│   │   ├── merge.gnu
-│   │   └── merge_sort_comparison.png
-│   │
-│   └── 3. Merging k sorted arrays/
-│       ├── merging_k_arrays.c
-│       ├── merging_k.dat
-│       ├── mergearray.exe
-│       ├── merging_k.gnu
-│       └── merging_k_comparison.png
-│
-├── LAB_3/
-│   ├── 1. Binary vs Ternary Search/
-│   │   ├── BTsearch.c
-│   │   ├── BTsearch.exe
-│   │   ├── plot.gnu
-│   │   └── search_data.dat
-│   │
-│   ├── 2. Search the Defective Coin/
-│   │   ├── Dcoin.c
-│   │   ├── Dcoin.exe
-│   │   ├── Dcoin.gnu
-│   │   └── data.dat
-│   │
-│   ├── 3. Max and Min using D&C Approach/
-│   │   ├── minmax.c
-│   │   └── minmax.exe
-│   │
-│   ├── 4. Matrix Multiplication using D&C Approach/
-│   │   ├── strassen.c
-│   │   └── strassen.exe
-│   │
-│   ├── 5. Multiply special-pattern square matrices using D&C approach/
-│   │   ├── specialmat.c
-│   │   ├── specialmat.exe
-│   │   └── specialmat.gnu
-│   │
-│   └── 6. Use of loop invariants in sorting/
-│       ├── loopsorting.c
-│       └── loopsorting.exe
-│
-└── LAB_4/
-    ├── 1. Application of sorting-I/
-    │   ├── color_sort.c
-    │   └── colorsort.exe
-    │
-    ├── 2. Application of sorting-II/
-    │   ├── add_pair_sort.c
-    │   └── addpairsort.exe
-    │
-    ├── 3. Application of sorting-III/
-    │   ├── add_upto_T.c
-    │   └── addT.exe
-    │
-    ├── 4. Application of sorting-IV/
-    │   ├── door_tracks.c
-    │   └── doortrack.exe
-    │
-    ├── 5. Application of sorting-V/
-    │   ├── overlapping_set.c
-    │   └── overlapping.exe
-    │
-    └── 6. Application of sorting-VI/
-        ├── common_point.c
-        └── commonpoint.exe
+├── LAB_1/   # Growth analysis and basic algorithms
+├── LAB_2/   # Merge sort and dictionary operations
+├── LAB_3/   # Divide and conquer algorithms
+├── LAB_4/   # Applications of sorting
+├── LAB_5/   # Selection, heap sort and quicksort
+└── LAB_6/   # Array, matrix, convolution and reversal operations
 ```
 
 ---
 
 ## Lab Index
 
-| Lab    | Topic                                                    | Questions | Folder |
-| ------ | -------------------------------------------------------- | --------- | ------ |
-| Lab 01 | Growth of functions, empirical analysis, recurrences     | 6 | [LAB_1](LAB_1) |
-| Lab 02 | Dictionary operations, merge sort variants, k-way merging | 3 | [LAB_2](LAB_2) |
+| Lab | Topic | Questions | Folder |
+|---|---|---:|---|
+| Lab 01 | Growth of functions, empirical analysis and recursion | 6 | [LAB_1](LAB_1) |
+| Lab 02 | Dictionary operations, merge sort and k-way merging | 3 | [LAB_2](LAB_2) |
 | Lab 03 | Divide and conquer algorithms and loop invariants | 6 | [LAB_3](LAB_3) |
 | Lab 04 | Applications of sorting | 6 | [LAB_4](LAB_4) |
+| Lab 05 | Selection algorithms, heap sort and quicksort | 4 | [LAB_5](LAB_5) |
+| Lab 06 | Array operations, matrix operations, convolution and reversal sorting | 4 | [LAB_6](LAB_6) |
 
 ---
 
-## LAB_1
+# LAB_1
 
-> Growth rates, randomised simulation, sorting, recursion, and counting the work an algorithm actually does.
+> Growth rates, randomised simulation, sorting, recursion, and algorithm analysis.
 
-| #   | Question                 | Description                                                                                                                | File                                                                                      |
-| --- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| 1   | Put them in Order        | Arrange the given functions in increasing order of growth for sufficiently large `n`.                                       | [Q1/growth.c](LAB_1/1.%20Put%20them%20in%20Order/growth.c) |
-| 2   | Fair vs Biased Coin      | Simulate coin tosses and compare a fair coin against biased coins.                                                          | [Q2/coin.c](LAB_1/2.%20Fair%20vs%20Biased%20coin/coin.c) |
-| 3   | Bubble Sort Performance  | Analyse bubble sort performance by counting operations as the input size grows.                                            | [Q3/bubble.c](LAB_1/3.%20Performance%20analysis%20of%20bubble%20sort/bubble.c) |
-| 4   | Towers of Hanoi          | Simulate the puzzle, tabulate the number of moves for `n` discs, and study its recursive growth.                            | [Q4/TOH.c](LAB_1/4.%20Towers%20of%20Hanoi/TOH.c) |
-| 5   | Find the Partition Point | Given an array of 0s followed by 1s, locate the transition point.                                                           | [Q5/partition.c](LAB_1/5.%20Find%20the%20partition%20point/partition.c) |
-| 6   | Element Uniqueness       | Check whether the given elements are unique and reason about the algorithmic cost.                                         | [Q6/unique.c](LAB_1/6.%20Element%20uniqueness/unique.c) |
-
----
-
-## Highlight — Q1 compares growth without relying on raw magnitude alone
-
-`growth.c` studies the relative growth of the functions in the assignment. The accompanying `growth.dat` file records the experimental values, while `plot.gnu` and `plot.png` provide the visual analysis.
-
-The important idea is that asymptotic comparison is about how functions behave as `n` becomes large, rather than only comparing their values for one small input.
+| # | Question | File |
+|---|---|---|
+| 1 | Put them in Order | [growth.c](LAB_1/1.%20Put%20them%20in%20Order/growth.c) |
+| 2 | Fair vs Biased Coin | [coin.c](LAB_1/2.%20Fair%20vs%20Biased%20coin/coin.c) |
+| 3 | Performance Analysis of Bubble Sort | [bubble.c](LAB_1/3.%20Performance%20analysis%20of%20bubble%20sort/bubble.c) |
+| 4 | Towers of Hanoi | [TOH.c](LAB_1/4.%20Towers%20of%20Hanoi/TOH.c) |
+| 5 | Find the Partition Point | [partition.c](LAB_1/5.%20Find%20the%20partition%20point/partition.c) |
+| 6 | Element Uniqueness | [unique.c](LAB_1/6.%20Element%20uniqueness/unique.c) |
 
 ---
 
-## LAB_2
+# LAB_2
 
-> Dictionary operations, merge sort variants, and strategies for merging k sorted arrays.
+> Dictionary operations, merge sort variants, and merging sorted arrays.
 
-| #   | Question                          | Description                                                                                                  | File                                                                                                      |
-| --- | --------------------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| 1   | Dictionary Operations             | Analyse dictionary operations and compare their behaviour experimentally.                                    | [Q1/dictionary_growth.c](LAB_2/1.%20Dictionary%20Operations/dictionary_growth.c) |
-| 2   | Merge Sort vs Modified Merge Sort | Compare standard merge sort with the modified merge-sort approach and analyse their performance.              | [Q2/merge_sort.c](LAB_2/2.%20Merge%20sort%20vs%20Modified%20merge%20sort/merge_sort.c) |
-| 3   | Merging k Sorted Arrays           | Compare strategies for merging `k` sorted arrays and study their time complexity.                             | [Q3/merging_k_arrays.c](LAB_2/3.%20Merging%20k%20sorted%20arrays/merging_k_arrays.c) |
-
----
-
-## Highlight — Lab 2 focuses on the cost of different algorithmic strategies
-
-The Lab 2 programs are accompanied by experimental data and plots. The purpose is to connect the theoretical complexity of dictionary operations, merge-sort variants, and k-way merging with measured behaviour as the input size changes.
+| # | Question | File |
+|---|---|---|
+| 1 | Dictionary Operations | [dictionary_growth.c](LAB_2/1.%20Dictionary%20Operations/dictionary_growth.c) |
+| 2 | Merge Sort vs Modified Merge Sort | [merge_sort.c](LAB_2/2.%20Merge%20sort%20vs%20Modified%20merge%20sort/merge_sort.c) |
+| 3 | Merging k Sorted Arrays | [merging_k_arrays.c](LAB_2/3.%20Merging%20k%20sorted%20arrays/merging_k_arrays.c) |
 
 ---
 
-## LAB_3
+# LAB_3
 
-> Divide and conquer, end to end: search, a balance-scale puzzle, selection, matrix multiplication, special-pattern matrices, and loop invariants.
+> Divide and conquer algorithms, searching, matrix multiplication, and loop invariants.
 
-| #   | Question                          | Description                                                                                                                        | File                                                                                                                     |
-| --- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| 1   | Binary vs Ternary Search           | Search a sorted array with both strategies and compare their number of comparisons.                                               | [Q1/BTsearch.c](LAB_3/1.%20Binary%20vs%20Ternary%20Search/BTsearch.c) |
-| 2   | Search the Defective Coin          | Find the defective coin using a divide-and-conquer balance-scale strategy.                                                         | [Q2/Dcoin.c](LAB_3/2.%20Search%20the%20Defective%20Coin/Dcoin.c) |
-| 3   | Max and Min using D&C              | Find both the maximum and minimum of an array using a divide-and-conquer approach.                                                 | [Q3/minmax.c](LAB_3/3.%20Max%20and%20Min%20using%20D%26C%20Approach/minmax.c) |
-| 4   | Matrix Multiplication using D&C    | Multiply matrices using Strassen's divide-and-conquer method.                                                                     | [Q4/strassen.c](LAB_3/4.%20Matrix%20Multiplication%20using%20D%26C%20Approach/strassen.c) |
-| 5   | Multiply Special-Pattern Matrices  | Exploit the recursive structure of special-pattern square matrices for multiplication.                                            | [Q5/specialmat.c](LAB_3/5.%20Multiply%20special-pattern%20square%20matrices%20using%20D%26C%20approach/specialmat.c) |
-| 6   | Loop Invariants in Sorting         | State, maintain and use a loop invariant to establish the correctness of a sorting algorithm.                                     | [Q6/loopsorting.c](LAB_3/6.%20Use%20of%20loop%20invariants%20in%20sorting/loopsorting.c) |
-
----
-
-## Highlight — Divide and conquer connects the Lab 3 problems
-
-Lab 3 applies the divide-and-conquer idea to several different problems. Binary search reduces the search space recursively, the defective-coin problem divides the candidate set, max-min reduces the number of comparisons through paired recursion, and Strassen's algorithm reduces the number of recursive matrix multiplications.
-
-The special-pattern matrix problem goes one step further by exploiting additional structure in the input rather than treating the matrix as completely arbitrary.
+| # | Question | File |
+|---|---|---|
+| 1 | Binary vs Ternary Search | [BTsearch.c](LAB_3/1.%20Binary%20vs%20Ternary%20Search/BTsearch.c) |
+| 2 | Search the Defective Coin | [Dcoin.c](LAB_3/2.%20Search%20the%20Defective%20Coin/Dcoin.c) |
+| 3 | Max and Min using D&C Approach | [minmax.c](LAB_3/3.%20Max%20and%20Min%20using%20D%26C%20Approach/minmax.c) |
+| 4 | Matrix Multiplication using D&C Approach | [strassen.c](LAB_3/4.%20Matrix%20Multiplication%20using%20D%26C%20Approach/strassen.c) |
+| 5 | Special-Pattern Matrix Multiplication | [specialmat.c](LAB_3/5.%20Multiply%20special-pattern%20square%20matrices%20using%20D%26C%20approach/specialmat.c) |
+| 6 | Use of Loop Invariants in Sorting | [loopsorting.c](LAB_3/6.%20Use%20of%20loop%20invariants%20in%20sorting/loopsorting.c) |
 
 ---
 
-## LAB_4
+# LAB_4
 
-> Applications of sorting: colour-based ordering, pair-sum search, k-element sum, event tracking, interval merging, and maximum-overlap point detection.
+> Applications of sorting: colour sorting, pair sums, event processing and interval problems.
 
-| #   | Question                 | Description                                                                                                             | File |
-| --- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------- | ---- |
-| 1   | Application of sorting-I | Given pairs containing a number and a colour, validate the numeric order and arrange the pairs by colour.              | [Q1/color_sort.c](LAB_4/1.%20Application%20of%20sorting-I/color_sort.c) |
-| 2   | Application of sorting-II | Given two sets and a target `x`, sort one set and use binary search to determine whether a pair sums to `x`.          | [Q2/add_pair_sort.c](LAB_4/2.%20Application%20of%20sorting-II/add_pair_sort.c) |
-| 3   | Application of sorting-III | Given a set, `k`, and target `T`, sort the set and determine whether `k` elements add up to `T`.                       | [Q3/add_upto_T.c](LAB_4/3.%20Application%20of%20sorting-III/add_upto_T.c) |
-| 4   | Application of sorting-IV | Given entry and exit times, sort the events and determine the maximum number of people present and when it occurs.   | [Q4/door_tracks.c](LAB_4/4.%20Application%20of%20sorting-IV/door_tracks.c) |
-| 5   | Application of sorting-V | Sort intervals by their starting point and merge overlapping intervals into a non-overlapping set.                    | [Q5/overlapping_set.c](LAB_4/5.%20Application%20of%20sorting-V/overlapping_set.c) |
-| 6   | Application of sorting-VI | Process interval endpoints as sorted events to find the point with the maximum number of overlapping intervals.       | [Q6/common_point.c](LAB_4/6.%20Application%20of%20sorting-VI/common_point.c) |
-
----
-
-## Highlight — Sorting becomes a building block
-
-Lab 4 demonstrates that sorting is often not the final objective of an algorithm. Instead, sorting can transform a problem so that another operation becomes efficient: binary search after sorting, recursive selection of elements, sweep-line processing of events, and linear merging of overlapping intervals.
-
-The implementations in this lab repeatedly use merge sort to order the relevant records or values before applying the problem-specific logic. citeturn33file0turn34file0turn35file0turn36file0turn37file0
+| # | Question | File |
+|---|---|---|
+| 1 | Application of Sorting-I | [color_sort.c](LAB_4/1.%20Application%20of%20sorting-I/color_sort.c) |
+| 2 | Application of Sorting-II | [add_pair_sort.c](LAB_4/2.%20Application%20of%20sorting-II/add_pair_sort.c) |
+| 3 | Application of Sorting-III | [add_upto_T.c](LAB_4/3.%20Application%20of%20sorting-III/add_upto_T.c) |
+| 4 | Application of Sorting-IV | [door_tracks.c](LAB_4/4.%20Application%20of%20sorting-IV/door_tracks.c) |
+| 5 | Application of Sorting-V | [overlapping_set.c](LAB_4/5.%20Application%20of%20sorting-V/overlapping_set.c) |
+| 6 | Application of Sorting-VI | [common_point.c](LAB_4/6.%20Application%20of%20sorting-VI/common_point.c) |
 
 ---
 
-## Results and Artifacts
+# LAB_5
 
-The simulation and measurement programs export their data; the plots are committed next to them inside their own question folder where applicable.
+> Selection algorithms and comparison-based sorting techniques.
 
-| Data | Plot | Produced by | What it shows |
-| --- | --- | --- | --- |
-| [Q1/growth.dat](LAB_1/1.%20Put%20them%20in%20Order/growth.dat) | [Q1/plot.png](LAB_1/1.%20Put%20them%20in%20Order/plot.png) | Q1 | Experimental growth behaviour of the functions in the assignment. |
-| [Q2/coin.dat](LAB_1/2.%20Fair%20vs%20Biased%20coin/coin.dat) | [Q2/coin.png](LAB_1/2.%20Fair%20vs%20Biased%20coin/coin.png) | Q2 | Experimental coin-toss behaviour for fair and biased coins. |
-| [Q3/bubble.dat](LAB_1/3.%20Performance%20analysis%20of%20bubble%20sort/bubble.dat) | [Q3/bubble.png](LAB_1/3.%20Performance%20analysis%20of%20bubble%20sort/bubble.png) | Q3 | Bubble-sort performance as input size changes. |
-| [Q4/toh.dat](LAB_1/4.%20Towers%20of%20Hanoi/toh.dat) | [Q4/toh.png](LAB_1/4.%20Towers%20of%20Hanoi/toh.png) | Q4 | Tower of Hanoi growth with increasing number of discs. |
-| [Q1/dictionary.dat](LAB_2/1.%20Dictionary%20Operations/dictionary.dat) | [Q1/dictionary_complexity.png](LAB_2/1.%20Dictionary%20Operations/dictionary_complexity.png) | Lab 2 Q1 | Experimental dictionary-operation behaviour. |
-| [Q2/merge.dat](LAB_2/2.%20Merge%20sort%20vs%20Modified%20merge%20sort/merge.dat) | [Q2/merge_sort_comparison.png](LAB_2/2.%20Merge%20sort%20vs%20Modified%20merge%20sort/merge_sort_comparison.png) | Lab 2 Q2 | Comparison of merge-sort approaches. |
-| [Q3/merging_k.dat](LAB_2/3.%20Merging%20k%20sorted%20arrays/merging_k.dat) | [Q3/merging_k_comparison.png](LAB_2/3.%20Merging%20k%20sorted%20arrays/merging_k_comparison.png) | Lab 2 Q3 | Comparison of k-way merging strategies. |
-| [Q1/search_data.dat](LAB_3/1.%20Binary%20vs%20Ternary%20Search/search_data.dat) | — | Lab 3 Q1 | Experimental comparison data for binary and ternary search. |
-| [Q2/data.dat](LAB_3/2.%20Search%20the%20Defective%20Coin/data.dat) | — | Lab 3 Q2 | Experimental defective-coin data. |
+| # | Question | Description | File |
+|---|---|---|---|
+| 1 | Median of Elements | Finds the median using a QuickSelect-based approach. | [median.c](LAB_5/Q1/median.c) |
+| 2 | K-th Smallest Element | Finds the K-th smallest element using QuickSelect. | [k_element.c](LAB_5/Q2/k_element.c) |
+| 3 | Heap Sort | Generates elements, sorts them using heap sort, and stores input and output in files. | [heapsort.c](LAB_5/Q3/heapsort.c) |
+| 4 | Quick Sort | Generates elements, sorts them using quicksort, and stores input and output in files. | [quicksort.c](LAB_5/Q4/quicksort.c) |
+
+### LAB_5 Files
+
+```text
+LAB_5/
+├── Q1/
+│   ├── median.c
+│   └── median.exe
+├── Q2/
+│   ├── k_element.c
+│   └── k_element.exe
+├── Q3/
+│   ├── heapsort.c
+│   ├── input2.txt
+│   └── sorted2.txt
+└── Q4/
+    ├── quicksort.c
+    ├── input.txt
+    └── sorted.txt
+```
+
+---
+
+# LAB_6
+
+> Array and matrix operations, FFT-based convolution, and sorting through reversal operations.
+
+| # | Question | Description | File |
+|---|---|---|---|
+| 1 | 1D Array Operations and Complexities | Performs maximum, largest elements, mean, median, standard deviation, mode, duplicate removal, reversal, and partitioning operations. | [1Darray.c](LAB_6/1.%201D%20array%20operations%20and%20their%20complexities/1Darray.c) |
+| 2 | 2D Square Matrix Operations and Complexities | Performs matrix addition, multiplication, zero/symmetry checks, determinant calculation, transpose, and dominant eigenvalue/eigenvector computation. | [2Dmatrix.c](LAB_6/2.%202D%20square%20matrix%20operations%20and%20their%20complexities/2Dmatrix.c) |
+| 3 | Convolution Operation on Vectors of Size n | Computes vector convolution using an FFT-based approach. | [FTT.c](LAB_6/3.%20Convolution%20operation%20on%20vectors%20of%20size%20n/FTT.c) |
+| 4 | Sorting via Reversal Procedure | Sorts a permutation using recursive stable partitioning and reversal operations. | [reversal.c](LAB_6/4.%20Sorting%20via%20reversal%20procedure/reversal.c) |
+
+### LAB_6 Files
+
+```text
+LAB_6/
+├── 1. 1D array operations and their complexities/
+│   └── 1Darray.c
+├── 2. 2D square matrix operations and their complexities/
+│   └── 2Dmatrix.c
+├── 3. Convolution operation on vectors of size n/
+│   └── FTT.c
+└── 4. Sorting via reversal procedure/
+    └── reversal.c
+```
 
 ---
 
 ## Complexity Summary
 
-| #   | Program                                                  | Time                            | Space                |
-| --- | -------------------------------------------------------- | ------------------------------- | -------------------- |
-| 1   | Growth ordering                                          | Depends on the functions evaluated | Depends on implementation |
-| 2   | Coin toss simulation                                     | Θ(n) in the number of tosses    | Θ(1)                 |
-| 3   | Bubble sort                                              | O(n²) worst case               | Θ(1) auxiliary       |
-| 4   | Towers of Hanoi                                          | Θ(2ⁿ) moves                     | Θ(n) recursion depth |
-| 5   | Partition point — linear scan                            | Θ(n)                            | Θ(1)                 |
-| 6   | Element uniqueness — pairwise comparison                 | O(n²)                           | Θ(1) auxiliary       |
-
-**LAB_2**
-
-| #   | Program                                        | Time                                                        | Space           |
-| --- | ---------------------------------------------- | ----------------------------------------------------------- | --------------- |
-| 1   | Dictionary operations                           | Depends on the chosen representation and operation          | Depends on representation |
-| 2   | Merge sort                                     | Θ(n log n)                                                  | Θ(n) auxiliary  |
-| 3   | k-way merge                                    | Depends on the merging strategy                             | Depends on implementation |
-
-**LAB_3**
-
-| #   | Program                                          | Time                            | Space                       |
-| --- | ------------------------------------------------- | -------------------------------- | ----------------------------- |
-| 1   | Binary search                                    | Θ(log n)                        | Θ(1)                        |
-| 1   | Ternary search                                   | Θ(log₃ n)                      | Θ(1)                        |
-| 2   | Defective coin — divide and conquer              | Θ(log n) weighings              | Θ(log n) recursion depth    |
-| 3   | Max-Min — divide and conquer                     | Θ(n)                            | Θ(log n) recursion depth    |
-| 4   | Strassen's matrix multiplication                 | O(n^log₂7) ≈ O(n^2.807)         | Θ(n²) auxiliary             |
-| 4   | Brute-force matrix multiplication                | Θ(n³)                           | Θ(1) auxiliary              |
-| 5   | Special-pattern matrix multiplication            | Depends on the recursive representation | Depends on representation |
-| 6   | Sorting with loop invariant                      | Depends on the sorting algorithm | Depends on implementation |
-
-**LAB_4**
-
-| #   | Program                                      | Time                                      | Space |
-| --- | -------------------------------------------- | ----------------------------------------- | ----- |
-| 1   | Colour-based pair sorting                    | Θ(n)                                      | Θ(n)  |
-| 2   | Pair sum using merge sort + binary search    | Θ(n log n)                                | Θ(n)  |
-| 3   | k-element sum using sorting + recursive search | Depends on `k`; includes sorting and recursive search | Θ(n) plus recursion |
-| 4   | Maximum people present using event sorting   | Θ(n log n)                                | Θ(n)  |
-| 5   | Merge overlapping intervals                  | Θ(n log n)                                | Θ(n)  |
-| 6   | Maximum-overlap point using event sorting    | Θ(n log n)                                | Θ(n)  |
+| Lab | Algorithm / Topic | Typical Time Complexity |
+|---|---|---|
+| LAB_1 | Bubble Sort | O(n²) |
+| LAB_1 | Towers of Hanoi | O(2ⁿ) |
+| LAB_2 | Merge Sort | O(n log n) |
+| LAB_3 | Binary Search | O(log n) |
+| LAB_3 | Strassen's Matrix Multiplication | O(n^2.807) |
+| LAB_4 | Sorting-based applications | Usually O(n log n) |
+| LAB_5 | QuickSelect | O(n) average |
+| LAB_5 | Heap Sort | O(n log n) |
+| LAB_5 | Quick Sort | O(n log n) average |
+| LAB_6 | FFT-based convolution | O(n log n) |
+| LAB_6 | Reversal-based sorting | Depends on reversal operations and recursive partitioning |
 
 ---
 
 ## Topics Covered
 
-**Analysis**
+### Algorithm Analysis
+- Asymptotic notation — O, Ω and Θ
+- Growth of functions
+- Best-case and worst-case analysis
+- Empirical performance analysis
 
-- [x] Asymptotic notation — Θ, O, Ω
-- [x] Ordering functions by rate of growth
-- [x] Polynomial vs superpolynomial vs exponential growth
-- [x] Best case vs worst case
-- [x] Counting primitive operations as a machine-independent cost model
+### Searching and Sorting
+- Bubble Sort
+- Merge Sort
+- Binary Search
+- Ternary Search
+- Heap Sort
+- Quick Sort
+- QuickSelect
+- Sorting applications
 
-**Algorithms**
+### Divide and Conquer
+- Towers of Hanoi
+- Defective Coin Problem
+- Maximum and Minimum
+- Strassen's Matrix Multiplication
+- Special-pattern matrices
 
-- [x] Sorting and performance analysis
-- [x] Bubble sort
-- [x] Linear search / partition point
-- [x] Binary search
-- [x] Ternary search
-- [x] Recursion (Towers of Hanoi)
-- [x] Merge sort
-- [x] k-way merging
-- [x] Divide and conquer
-- [x] Strassen's matrix multiplication
-
-**Recurrences and Randomisation**
-
-- [x] Solving and analysing recursive algorithms
-- [x] Verifying theoretical growth against experimental data
-- [x] Coin-toss simulation
-- [x] Master theorem and divide-and-conquer recurrences
-
-**Data Structures (LAB_2)**
-
-- [x] Dictionary operations
-- [x] Arrays and linked representations
-- [x] Cost trade-offs between different representations
-
-**Divide and Conquer (LAB_3)**
-
-- [x] Binary vs ternary search
-- [x] Defective-coin problem
-- [x] Simultaneous maximum and minimum
-- [x] Strassen's matrix multiplication
-- [x] Special-pattern matrix multiplication
-- [x] Loop invariants — initialization, maintenance, termination
-
-**Applications of Sorting (LAB_4)**
-
-- [x] Sorting records by colour
-- [x] Pair-sum search using sorting and binary search
-- [x] k-element sum search
-- [x] Event sorting and sweep-line processing
-- [x] Merging overlapping intervals
-- [x] Finding a point of maximum interval overlap
-
----
-
-## Technologies Used
-
-| Tool                         | Purpose                                   |
-| ---------------------------- | ----------------------------------------- |
-| C (C99 / C11)                | Implementation language                   |
-| GCC                          | Compilation                               |
-| C standard library           | `stdio.h`, `stdlib.h`, `math.h`, `time.h` |
-| Gnuplot                      | Generating plots from experimental data   |
-| `.dat` files                 | Exporting measurements for plotting        |
-| VS Code / Windows            | Editor and development environment        |
-| Git and GitHub               | Version control                           |
+### Advanced Applications
+- Interval merging and overlap detection
+- Event processing
+- K-th smallest element
+- Median selection
+- Matrix operations
+- FFT-based convolution
+- Sorting through reversal procedures
 
 ---
 
 ## Compilation and Execution
 
-Each question lives in its own folder, so `cd` into it before compiling:
-
-### LAB_1
+Compile individual programs using GCC:
 
 ```bash
-cd 'LAB_1/1. Put them in Order'
-gcc -O2 -o Q1 growth.c -lm && ./Q1
-
-cd '../2. Fair vs Biased coin'
-gcc -o Q2 coin.c && ./Q2
-
-cd '../3. Performance analysis of bubble sort'
-gcc -o Q3 bubble.c && ./Q3
-
-cd '../4. Towers of Hanoi'
-gcc -o Q4 TOH.c && ./Q4
-
-cd '../5. Find the partition point'
-gcc -o Q5 partition.c && ./Q5
-
-cd '../6. Element uniqueness'
-gcc -O2 -o Q6 unique.c && ./Q6
+gcc filename.c -o program
+./program
 ```
 
-### LAB_2
+Some programs require the math library:
 
 ```bash
-cd 'LAB_2/1. Dictionary Operations'
-gcc -O2 -o Q1 dictionary_growth.c && ./Q1
-
-cd '../2. Merge sort vs Modified merge sort'
-gcc -O2 -o Q2 merge_sort.c && ./Q2
-
-cd '../3. Merging k sorted arrays'
-gcc -O2 -o Q3 merging_k_arrays.c && ./Q3
+gcc filename.c -o program -lm
+./program
 ```
 
-### LAB_3
+### Examples
 
 ```bash
-cd 'LAB_3/1. Binary vs Ternary Search'
-gcc -O2 -o Q1 BTsearch.c && ./Q1
+# LAB_5
+cd LAB_5/Q1
+gcc median.c -o median
+./median
 
-cd '../2. Search the Defective Coin'
-gcc -O2 -o Q2 Dcoin.c -lm && ./Q2
-
-cd '../3. Max and Min using D&C Approach'
-gcc -O2 -o Q3 minmax.c && ./Q3
-
-cd '../4. Matrix Multiplication using D&C Approach'
-gcc -O2 -o Q4 strassen.c && ./Q4
-
-cd '../5. Multiply special-pattern square matrices using D&C approach'
-gcc -O2 -o Q5 specialmat.c && ./Q5
-
-cd '../6. Use of loop invariants in sorting'
-gcc -O2 -o Q6 loopsorting.c && ./Q6
+# LAB_6
+cd "LAB_6/1. 1D array operations and their complexities"
+gcc 1Darray.c -o 1Darray -lm
+./1Darray
 ```
 
-### LAB_4
+On Windows with MinGW:
 
 ```bash
-cd 'LAB_4/1. Application of sorting-I'
-gcc -O2 -o Q1 color_sort.c && ./Q1
-
-cd '../2. Application of sorting-II'
-gcc -O2 -o Q2 add_pair_sort.c && ./Q2
-
-cd '../3. Application of sorting-III'
-gcc -O2 -o Q3 add_upto_T.c && ./Q3
-
-cd '../4. Application of sorting-IV'
-gcc -O2 -o Q4 door_tracks.c && ./Q4
-
-cd '../5. Application of sorting-V'
-gcc -O2 -o Q5 overlapping_set.c && ./Q5
-
-cd '../6. Application of sorting-VI'
-gcc -O2 -o Q6 common_point.c && ./Q6
-```
-
-Recommended flags while working:
-
-```bash
-gcc -std=c11 -Wall -Wextra -O2 file.c -o out -lm
-```
-
-**On Windows** (MinGW-w64), replace `-o Q1` with `-o Q1.exe` and run `Q1.exe`.
-
-**Note on generated files.** Q1, Q3, and Q4 in LAB_1 write their experimental data into the current working directory under fixed names (`growth.dat`, `bubble.dat`, and `toh.dat`). Running them from inside their own question folder will overwrite the committed copies there.
-
-To regenerate a plot after re-running a program, run the corresponding `.gnu` script from that question folder with Gnuplot. For example:
-
-```bash
-gnuplot plot.gnu
+gcc filename.c -o program.exe
+program.exe
 ```
 
 ---
 
-## Repository Conventions
+## Technologies Used
 
-- One top-level folder per lab, named `LAB_1`, `LAB_2`, `LAB_3`, and `LAB_4`, containing one subfolder per question.
-- One subfolder per question, named after the question itself, holding that question's `.c` file plus anything it generates (DAT data, PNG plots, and Gnuplot scripts where applicable).
-- Sources are named according to the problem, such as `growth.c`, `merge_sort.c`, `BTsearch.c`, `loopsorting.c`, and `color_sort.c`.
-- Generated data files keep the name of the analysis they describe, and their plots are stored alongside them where applicable.
+| Tool | Purpose |
+|---|---|
+| C | Implementation language |
+| GCC | Compilation |
+| C Standard Library | Core program functionality |
+| Gnuplot | Plot generation where applicable |
+| Git and GitHub | Version control and repository hosting |
 
 ---
 
 ## License
 
-Coursework, published for reference and learning. Feel free to read, run and learn from it; please do not submit it as your own.
+Coursework, published for reference and learning. Feel free to read and learn from the code, but please do not submit it as your own.
 
 ---
 
