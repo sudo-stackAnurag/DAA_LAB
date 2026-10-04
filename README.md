@@ -14,7 +14,7 @@
 
 # Introduction
 
-This repository contains C implementations and analyses of problems completed as part of the **Design and Analysis of Algorithms (DAA) Laboratory**. The repository covers fundamental algorithmic ideas including growth analysis, searching, sorting, divide and conquer, selection algorithms, matrix operations, convolution, and reversal-based algorithms.
+This repository contains C implementations and analyses of problems completed as part of the **Design and Analysis of Algorithms (DAA) Laboratory**. The repository covers fundamental algorithmic ideas including growth analysis, searching, sorting, divide and conquer, selection algorithms, matrix operations, convolution, reversal-based algorithms, and dynamic programming.
 
 Each laboratory section follows a consistent structure containing:
 
@@ -83,7 +83,8 @@ DAA_LAB/
 ├── LAB_3/   # Divide and conquer algorithms
 ├── LAB_4/   # Applications of sorting
 ├── LAB_5/   # Selection, heap sort and quicksort
-└── LAB_6/   # Array, matrix, convolution and reversal operations
+├── LAB_6/   # Array, matrix, convolution and reversal operations
+└── LAB_7/   # Dynamic programming and advanced algorithmic problems
 ```
 
 ---
@@ -98,6 +99,7 @@ DAA_LAB/
 | Lab 04 | Applications of sorting | 6 | [LAB_4](LAB_4) |
 | Lab 05 | Selection and sorting algorithms | 4 | [LAB_5](LAB_5) |
 | Lab 06 | Arrays, matrices, convolution and reversals | 4 | [LAB_6](LAB_6) |
+| Lab 07 | Advanced algorithmic and dynamic programming problems | 7 | [LAB_7](LAB_7) |
 
 ---
 
@@ -114,7 +116,6 @@ Arrange and compare functions according to their rates of growth.
 Functions are analysed using asymptotic growth rates and arranged from slower-growing to faster-growing functions.
 
 ### Complexity Concept
-The exercise focuses on common growth classes such as:
 
 ```text
 O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ) < O(n!)
@@ -217,7 +218,6 @@ Determine whether all elements in an array are unique.
 Compare elements to detect duplicate values.
 
 ### Complexity
-A direct comparison-based implementation typically requires:
 
 ```text
 Time: O(n²)
@@ -323,7 +323,6 @@ This lab demonstrates how problems can be divided into smaller subproblems, solv
 Compare Binary Search and Ternary Search for locating an element in a sorted array.
 
 ### Algorithm
-
 Binary Search divides the search range into two parts, while Ternary Search divides it into three parts.
 
 ### Complexity
@@ -848,6 +847,172 @@ Total reversal cost
 
 ---
 
+# LAB_7 — Advanced Algorithmic and Dynamic Programming Problems
+
+This lab covers advanced problems involving mathematical analysis, dynamic programming, recursive optimisation, constructive strategies, and interval/event processing.
+
+## Application I — Invert the Coin Triangle
+
+### Problem
+Determine the minimum number of moves required to invert a triangular arrangement of coins.
+
+### Algorithm / Approach
+The implementation uses a closed-form formula based on the number of rows and also performs an exact lattice-overlap check for smaller triangles to validate the formula.
+
+### Complexity
+
+```text
+Formula calculation: O(1)
+Exact validation:     O(n⁴) for rows <= 60
+```
+
+### Source Code
+[Open coin_triangle.c](LAB_7/1.%20Invert%20the%20coin%20triangle/coin_triangle.c)
+
+---
+
+## Application II — Super Egg Testing Experiment
+
+### Problem
+Given a number of eggs and floors, determine the minimum number of egg drops required to find the critical floor in the worst case.
+
+### Algorithm
+Dynamic programming is used. For every number of eggs and floors, the program tries every possible dropping floor and chooses the strategy that minimises the worst-case number of drops.
+
+### Complexity
+
+```text
+Time: O(eggs × floors²)
+Space: O(eggs × floors)
+```
+
+### Source Code
+[Open egg_drop.c](LAB_7/2.%20Super%20egg%20testing%20experiment/egg_drop.c)
+
+---
+
+## Application III — Reve's Puzzle
+
+### Problem
+Solve the four-peg Tower of Hanoi problem, also known as Reve's Puzzle, using the Frame-Stewart strategy.
+
+### Algorithm
+The program computes the optimal split for the top group of disks and recursively solves the two four-peg subproblems with a three-peg Hanoi operation for the remaining disks.
+
+### Complexity
+The exact growth is determined by the optimal Frame-Stewart recurrence and is substantially smaller than the standard three-peg Hanoi recurrence for larger inputs.
+
+### Source Code
+[Open reve_hanoi.c](LAB_7/3.%20Reve's%20puzzle/reve_hanoi.c)
+
+---
+
+## Application IV — Security Switches
+
+### Problem
+Determine a minimum legal sequence of switch toggles under the ordering constraints of the security-switch puzzle.
+
+### Algorithm / Approach
+A recursive sequence construction generates the required toggle order. The program also validates the generated sequence and checks that its length matches the derived minimum-move formula.
+
+### Complexity
+
+```text
+Sequence generation: O(2ⁿ)
+Validation:           O(2ⁿ)
+```
+
+The sequence is printed only for small inputs to keep the output manageable.
+
+### Source Code
+[Open security_switches.c](LAB_7/4.%20Security%20switches/security_switches.c)
+
+---
+
+## Application V — Hitting a Moving Target
+
+### Problem
+Find a guaranteed sequence of shots for a target that can move between a set of hiding spots.
+
+### Algorithm / Approach
+The program constructs a sweep from the second position to the penultimate position and then sweeps back, producing a guaranteed strategy.
+
+### Complexity
+
+```text
+Time: O(n)
+Space: O(1)
+```
+
+### Source Code
+[Open moving_target.c](LAB_7/5.%20Hitting%20a%20moving%20target/moving_target.c)
+
+---
+
+## Application VI — The Best Time to Be Alive
+
+### Problem
+Given the birth and death years of scientists, determine the year in which the maximum number of scientists were alive.
+
+### Algorithm
+Convert each person's lifespan into a birth event and a death event, sort all events by year, and scan them while maintaining the number of currently alive scientists.
+
+### Complexity
+
+```text
+Sorting: O(n log n)
+Scan:    O(n)
+Total:   O(n log n)
+Space:   O(n)
+```
+
+### Source Code
+[Open scientists_alive.c](LAB_7/6.%20The%20best%20time%20to%20be%20alive/scientists_alive.c)
+
+---
+
+## Application VII — Matrix Chain Multiplication
+
+### Problem
+Find the most efficient order for multiplying a chain of matrices so that the number of scalar multiplications is minimised.
+
+### Algorithm
+Dynamic programming evaluates every possible split point for every matrix-chain interval and stores the minimum cost and optimal split.
+
+### Complexity
+
+```text
+Time: O(n³)
+Space: O(n²)
+```
+
+### Example
+
+```text
+The program outputs:
+Minimum scalar multiplications
+Optimal parenthesization order
+```
+
+### Source Code
+[Open matrix_chain.c](LAB_7/7.%20matrix%20chain%20multiplicaction/matrix_chain.c)
+
+---
+
+# LAB_7 Summary
+
+| Application | Main Technique | Typical Complexity |
+|---|---|---|
+| Invert the Coin Triangle | Mathematical formula + validation | O(1) formula / O(n⁴) validation |
+| Super Egg Testing | Dynamic programming | O(eggs × floors²) |
+| Reve's Puzzle | Recursive optimisation | Frame-Stewart recurrence |
+| Security Switches | Recursive sequence construction | O(2ⁿ) |
+| Hitting a Moving Target | Constructive strategy | O(n) |
+| Best Time to Be Alive | Sorting + sweep line | O(n log n) |
+| Matrix Chain Multiplication | Dynamic programming | O(n³) |
+
+---
+
 # Common Implementation Details
 
 The programs throughout this repository demonstrate several recurring algorithmic techniques.
@@ -864,6 +1029,20 @@ Combine results
 
 Used in searching, matrix multiplication, recursion, and several sorting-related problems.
 
+### Dynamic Programming
+
+```text
+Define subproblems
+       ↓
+Store previously computed results
+       ↓
+Reuse results
+       ↓
+Build optimal solution
+```
+
+Used prominently in the Egg Drop and Matrix Chain Multiplication problems in LAB_7.
+
 ### Sorting as Preprocessing
 
 ```text
@@ -874,7 +1053,7 @@ Sort
 Efficient Scan / Search
 ```
 
-Used extensively in LAB_4.
+Used extensively in LAB_4 and in the scientist-lifespan problem in LAB_7.
 
 ### Recursive Algorithms
 
@@ -886,6 +1065,8 @@ Used in:
 - QuickSelect
 - FFT
 - Reversal-based sorting
+- Reve's Puzzle
+- Security Switches
 
 ---
 
@@ -903,6 +1084,8 @@ Used in:
 | Quick Sort | Average O(n log n) |
 | Matrix Multiplication | O(n³) |
 | FFT Convolution | O(N log N) |
+| Egg Drop DP | O(eggs × floors²) |
+| Matrix Chain Multiplication | O(n³) |
 
 ---
 
@@ -910,7 +1093,7 @@ Used in:
 
 This repository provides practical implementations of major concepts from **Design and Analysis of Algorithms**.
 
-The six laboratory assignments collectively cover:
+The seven laboratory assignments collectively cover:
 
 ```text
 LAB_1 → Growth analysis and basic algorithms
@@ -919,6 +1102,7 @@ LAB_3 → Divide and conquer
 LAB_4 → Applications of sorting
 LAB_5 → Selection and efficient sorting
 LAB_6 → Arrays, matrices, FFT and reversal algorithms
+LAB_7 → Dynamic programming and advanced algorithmic problems
 ```
 
 Together, these programs demonstrate how selecting the appropriate algorithmic strategy and data representation can significantly improve problem-solving efficiency.
