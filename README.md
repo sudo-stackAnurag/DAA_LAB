@@ -84,7 +84,8 @@ DAA_LAB/
 ├── LAB_4/   # Applications of sorting
 ├── LAB_5/   # Selection, heap sort and quicksort
 ├── LAB_6/   # Array, matrix, convolution and reversal operations
-└── LAB_7/   # Dynamic programming and advanced algorithmic problems
+├── LAB_7/   # Dynamic programming and advanced algorithmic problems
+└── LAB_8/   # Dynamic programming and subsequence/string optimisation
 ```
 
 ---
@@ -100,6 +101,7 @@ DAA_LAB/
 | Lab 05 | Selection and sorting algorithms | 4 | [LAB_5](LAB_5) |
 | Lab 06 | Arrays, matrices, convolution and reversals | 4 | [LAB_6](LAB_6) |
 | Lab 07 | Advanced algorithmic and dynamic programming problems | 7 | [LAB_7](LAB_7) |
+| Lab 08 | Dynamic programming and optimisation problems | 9 | [LAB_8](LAB_8) |
 
 ---
 
@@ -569,13 +571,6 @@ Average Time: O(n)
 Worst Case:   O(n²)
 ```
 
-### Example
-
-```text
-Input: 1 7 3 9 5
-Median: 5
-```
-
 ### Source Code
 [Open median.c](LAB_5/Q1/median.c)
 
@@ -596,20 +591,6 @@ Average Time: O(n)
 Worst Case:   O(n²)
 ```
 
-### Example
-
-```text
-Array: 7 10 4 3 20 15
-k = 3
-3rd smallest = 7
-```
-
-### Validation
-
-```text
-1 <= k <= n
-```
-
 ### Source Code
 [Open k_element.c](LAB_5/Q2/k_element.c)
 
@@ -621,27 +602,13 @@ k = 3
 Generate, store, and sort elements using Heap Sort.
 
 ### Algorithm
-
-```text
-Build Max Heap
-        ↓
-Move maximum to the end
-        ↓
-Heapify the remaining elements
-```
+Build a max heap, repeatedly move the maximum element to the end, and heapify the remaining elements.
 
 ### Complexity
 
 ```text
 Time: O(n log n)
 Auxiliary Space: O(1)
-```
-
-### Files
-
-```text
-Random input  → input2.txt
-Sorted output → sorted2.txt
 ```
 
 ### Source Code
@@ -662,13 +629,6 @@ Select a pivot, partition the array, and recursively sort both partitions.
 ```text
 Best / Average: O(n log n)
 Worst:          O(n²)
-```
-
-### Files
-
-```text
-Random input  → input.txt
-Sorted output → sorted.txt
 ```
 
 ### Source Code
@@ -787,17 +747,6 @@ Compute inverse FFT
 Time: O(N log N)
 ```
 
-where `N` is the padded power-of-two size.
-
-### Example
-
-```text
-A = {1, 2, 3}
-B = {4, 5, 6}
-
-Convolution = {4, 13, 28, 27, 18}
-```
-
 ### Source Code
 [Open FTT.c](LAB_6/3.%20Convolution%20operation%20on%20vectors%20of%20size%20n/FTT.c)
 
@@ -811,25 +760,8 @@ Sort a permutation using reversal operations.
 ### Algorithm
 The program recursively partitions the values and uses reversals to rearrange subarrays while preserving the required ordering.
 
-### Approach
-
-```text
-Divide the value range
-        ↓
-Partition elements
-        ↓
-Reverse required subarrays
-        ↓
-Recursively process both groups
-```
-
 ### Output Information
-The program reports the sorted permutation along with:
-
-```text
-Number of reversals
-Total reversal cost
-```
+The program reports the sorted permutation along with the number of reversals and total reversal cost.
 
 ### Source Code
 [Open reversal.c](LAB_6/4.%20Sorting%20via%20reversal%20procedure/reversal.c)
@@ -900,7 +832,7 @@ Solve the four-peg Tower of Hanoi problem, also known as Reve's Puzzle, using th
 The program computes the optimal split for the top group of disks and recursively solves the two four-peg subproblems with a three-peg Hanoi operation for the remaining disks.
 
 ### Complexity
-The exact growth is determined by the optimal Frame-Stewart recurrence and is substantially smaller than the standard three-peg Hanoi recurrence for larger inputs.
+The exact growth is determined by the optimal Frame-Stewart recurrence.
 
 ### Source Code
 [Open reve_hanoi.c](LAB_7/3.%20Reve's%20puzzle/reve_hanoi.c)
@@ -913,7 +845,7 @@ The exact growth is determined by the optimal Frame-Stewart recurrence and is su
 Determine a minimum legal sequence of switch toggles under the ordering constraints of the security-switch puzzle.
 
 ### Algorithm / Approach
-A recursive sequence construction generates the required toggle order. The program also validates the generated sequence and checks that its length matches the derived minimum-move formula.
+A recursive sequence construction generates the required toggle order. The program also validates the generated sequence and checks its length against the derived minimum-move formula.
 
 ### Complexity
 
@@ -921,8 +853,6 @@ A recursive sequence construction generates the required toggle order. The progr
 Sequence generation: O(2ⁿ)
 Validation:           O(2ⁿ)
 ```
-
-The sequence is printed only for small inputs to keep the output manageable.
 
 ### Source Code
 [Open security_switches.c](LAB_7/4.%20Security%20switches/security_switches.c)
@@ -935,7 +865,7 @@ The sequence is printed only for small inputs to keep the output manageable.
 Find a guaranteed sequence of shots for a target that can move between a set of hiding spots.
 
 ### Algorithm / Approach
-The program constructs a sweep from the second position to the penultimate position and then sweeps back, producing a guaranteed strategy.
+The program constructs a sweep from the second position to the penultimate position and then sweeps back.
 
 ### Complexity
 
@@ -955,7 +885,7 @@ Space: O(1)
 Given the birth and death years of scientists, determine the year in which the maximum number of scientists were alive.
 
 ### Algorithm
-Convert each person's lifespan into a birth event and a death event, sort all events by year, and scan them while maintaining the number of currently alive scientists.
+Convert each lifespan into a birth event and a death event, sort all events by year, and scan them while maintaining the number of currently alive scientists.
 
 ### Complexity
 
@@ -986,14 +916,6 @@ Time: O(n³)
 Space: O(n²)
 ```
 
-### Example
-
-```text
-The program outputs:
-Minimum scalar multiplications
-Optimal parenthesization order
-```
-
 ### Source Code
 [Open matrix_chain.c](LAB_7/7.%20matrix%20chain%20multiplicaction/matrix_chain.c)
 
@@ -1010,6 +932,207 @@ Optimal parenthesization order
 | Hitting a Moving Target | Constructive strategy | O(n) |
 | Best Time to Be Alive | Sorting + sweep line | O(n log n) |
 | Matrix Chain Multiplication | Dynamic programming | O(n³) |
+
+---
+
+# LAB_8 — Dynamic Programming and Optimisation Problems
+
+This lab focuses on dynamic programming problems involving coin change, subsequences, string transformation, rod cutting, optimal search trees, and sequence analysis. The current repository contains **9 applications** in LAB_8. fileciteturn119file0
+
+## Application I — Minimum Coin Change
+
+### Problem
+Find the minimum number of coins required to make a target amount using the available coin denominations.
+
+### Algorithm / Approach
+Use dynamic programming to build the minimum number of coins required for every amount from `0` to the target.
+
+### Complexity
+
+```text
+Time: O(n × amount)
+Space: O(amount)
+```
+
+### Source Code
+[Open mincoinchange.c](LAB_8/1.%20%5BMinimum%20Coin%20Change%5D/mincoinchange.c)
+
+---
+
+## Application II — Coin Change Ways
+
+### Problem
+Determine the number of different combinations of coins that can be used to make a target amount.
+
+### Algorithm / Approach
+Use dynamic programming where each denomination updates the number of ways to form every reachable amount.
+
+### Complexity
+
+```text
+Time: O(n × amount)
+Space: O(amount)
+```
+
+### Source Code
+[Open coinchangeways.c](LAB_8/2.%20%5B Coin%20Change%20ways%5D/coinchangeways.c)
+
+---
+
+## Application III — Longest Common Subsequence (LCS)
+
+### Problem
+Find the longest subsequence common to two given sequences or strings.
+
+### Algorithm / Approach
+Construct a dynamic-programming table comparing prefixes of the two sequences and reconstruct the common subsequence from the table.
+
+### Complexity
+
+```text
+Time: O(m × n)
+Space: O(m × n)
+```
+
+### Source Code
+[Open LCS.c](LAB_8/3.%20%5BLongest%20Common%20Subsequence%20(LCS)%5D/LCS.c)
+
+---
+
+## Application IV — Longest Increasing Subsequence
+
+### Problem
+Find the longest subsequence of an array whose elements are in strictly increasing order.
+
+### Algorithm / Approach
+Use dynamic programming to calculate the longest increasing subsequence ending at every array position.
+
+### Complexity
+
+```text
+Time: O(n²)
+Space: O(n)
+```
+
+### Source Code
+[Open LIS.c](LAB_8/4.%20%5BLongest%20Increasing%20Subsequence%5D/LIS.c)
+
+---
+
+## Application V — Maximum Sum Increasing Subsequence
+
+### Problem
+Find an increasing subsequence whose elements have the maximum possible sum.
+
+### Algorithm / Approach
+For each element, store the maximum sum of an increasing subsequence ending at that element and update it using earlier smaller elements.
+
+### Complexity
+
+```text
+Time: O(n²)
+Space: O(n)
+```
+
+### Source Code
+[Open maxsumincreasingsub.c](LAB_8/5.%20%5BMaximum%20Sum%20Increasing%20Subsequence%5D/maxsumincreasingsub.c)
+
+---
+
+## Application VI — Edit Distance with Traceback Information
+
+### Problem
+Find the minimum number of insertions, deletions, and substitutions required to transform one string into another and provide the corresponding traceback information.
+
+### Algorithm / Approach
+Build an edit-distance dynamic-programming table and trace backward through the table to reconstruct the sequence of operations.
+
+### Complexity
+
+```text
+Time: O(m × n)
+Space: O(m × n)
+```
+
+### Source Code
+[Open traceback.c](LAB_8/6.%20%5BEdit%20Distance%20with%20Traceback%20Information%5D/traceback.c)
+
+---
+
+## Application VII — Rod Cutting with Reconstruction
+
+### Problem
+Determine the maximum obtainable revenue by cutting a rod into pieces and reconstruct the cuts that produce the optimal revenue.
+
+### Algorithm / Approach
+Use dynamic programming to calculate the best revenue for every rod length and store the first cut used to reconstruct the optimal solution.
+
+### Complexity
+
+```text
+Time: O(n²)
+Space: O(n)
+```
+
+### Source Code
+[Open reconstruction.c](LAB_8/7.%20%5BRod%20Cutting%20with%20Reconstruction%5D/reconstruction.c)
+
+---
+
+## Application VIII — Optimal Binary Search Trees (OBST)
+
+### Problem
+Construct a binary search tree with minimum expected search cost for keys with given search frequencies/probabilities.
+
+### Algorithm / Approach
+Dynamic programming evaluates possible roots for every key interval and stores the minimum search cost.
+
+### Complexity
+
+```text
+Time: O(n³)
+Space: O(n²)
+```
+
+### Source Code
+[Open OBST.c](LAB_8/8.%20%5BOptimal%20Binary%20Search%20Trees%20(OBST)%5D/OBST.c)
+
+---
+
+## Application IX — Collatz Conjecture
+
+### Problem
+Generate and analyse the Collatz sequence for a positive integer by repeatedly applying the Collatz transformation.
+
+### Algorithm
+
+```text
+If n is even → n = n / 2
+If n is odd  → n = 3n + 1
+Repeat until n = 1
+```
+
+### Complexity
+The total stopping time is input dependent; no general proven polynomial bound for the Collatz process is known.
+
+### Source Code
+[Open collatz.c](LAB_8/9.%20%5BCollatz%20Conjecture%5D/collatz.c)
+
+---
+
+# LAB_8 Summary
+
+| Application | Main Technique | Typical Complexity |
+|---|---|---|
+| Minimum Coin Change | Dynamic programming | O(n × amount) |
+| Coin Change Ways | Dynamic programming | O(n × amount) |
+| Longest Common Subsequence | Dynamic programming | O(m × n) |
+| Longest Increasing Subsequence | Dynamic programming | O(n²) |
+| Maximum Sum Increasing Subsequence | Dynamic programming | O(n²) |
+| Edit Distance | Dynamic programming + traceback | O(m × n) |
+| Rod Cutting | Dynamic programming + reconstruction | O(n²) |
+| Optimal BST | Dynamic programming | O(n³) |
+| Collatz Conjecture | Iterative sequence analysis | Input dependent |
 
 ---
 
@@ -1041,7 +1164,7 @@ Reuse results
 Build optimal solution
 ```
 
-Used prominently in the Egg Drop and Matrix Chain Multiplication problems in LAB_7.
+Used prominently throughout LAB_7 and LAB_8 for optimisation and sequence problems.
 
 ### Sorting as Preprocessing
 
@@ -1086,6 +1209,10 @@ Used in:
 | FFT Convolution | O(N log N) |
 | Egg Drop DP | O(eggs × floors²) |
 | Matrix Chain Multiplication | O(n³) |
+| LCS | O(m × n) |
+| Edit Distance | O(m × n) |
+| Rod Cutting | O(n²) |
+| Optimal BST | O(n³) |
 
 ---
 
@@ -1093,7 +1220,7 @@ Used in:
 
 This repository provides practical implementations of major concepts from **Design and Analysis of Algorithms**.
 
-The seven laboratory assignments collectively cover:
+The eight laboratory assignments collectively cover:
 
 ```text
 LAB_1 → Growth analysis and basic algorithms
@@ -1103,6 +1230,7 @@ LAB_4 → Applications of sorting
 LAB_5 → Selection and efficient sorting
 LAB_6 → Arrays, matrices, FFT and reversal algorithms
 LAB_7 → Dynamic programming and advanced algorithmic problems
+LAB_8 → Dynamic programming, subsequences, string optimisation and sequence analysis
 ```
 
 Together, these programs demonstrate how selecting the appropriate algorithmic strategy and data representation can significantly improve problem-solving efficiency.
