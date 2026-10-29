@@ -86,7 +86,8 @@ DAA_LAB/
 ├── LAB_6/   # Array, matrix, convolution and reversal operations
 ├── LAB_7/   # Dynamic programming and advanced algorithmic problems
 ├── LAB_8/   # Dynamic programming and subsequence/string optimisation
-└── LAB_9/   # Greedy algorithms, heaps, scheduling and optimisation
+├── LAB_9/   # Greedy algorithms, heaps, scheduling and optimisation
+└── LAV_10/  # LAB 10: DSU, dynamic connectivity and graph components
 ```
 
 ---
@@ -104,6 +105,7 @@ DAA_LAB/
 | Lab 07 | Advanced algorithmic and dynamic programming problems | 7 | [LAB_7](LAB_7) |
 | Lab 08 | Dynamic programming and optimisation problems | 9 | [LAB_8](LAB_8) |
 | Lab 09 | Greedy algorithms, heaps, scheduling and optimisation | 10 | [LAB_9](LAB_9) |
+| Lab 10 | Disjoint sets, dynamic connectivity and graph components | 5 | [LAB 10 files](LAV_10) |
 
 ---
 
@@ -1322,6 +1324,124 @@ Depends on the overlap-search and merging implementation; repeated pairwise over
 
 ---
 
+# LAB_10 — Disjoint Sets and Dynamic Graph Connectivity
+
+This lab focuses on graph connectivity problems using Disjoint Set Union (DSU), also known as Union-Find. The applications cover online bipartiteness, dynamic islands, weighted connected components, reverse vertex deletion, and lexicographically minimal permutations.
+
+> **Folder note:** The repository directory is currently named `LAV_10`; the links below use that existing path.
+
+## Application I — Online Graph Bipartiteness
+
+### Problem
+Process graph edges one at a time, accepting an edge only if adding it preserves the graph's bipartite property.
+
+### Algorithm / Approach
+Use DSU with parity information to track the relative colours of vertices within each connected component. An edge joining vertices already constrained to the same colour is rejected.
+
+### Complexity
+
+```text
+Time: O((V + E) α(V)) amortised
+Space: O(V)
+```
+
+### Source Code
+[Open q1_online_graph_bipartiteness.c](LAV_10/q1_online_graph_bipartiteness.c)
+
+---
+
+## Application II — Dynamic Islands in a Grid
+
+### Problem
+Starting with a water-filled grid, add land positions one by one and report the number of islands after every operation.
+
+### Algorithm / Approach
+Flatten each grid coordinate into a single index. When a new land cell is added, create its DSU set and union it with each adjacent land cell, reducing the island count whenever two distinct components merge.
+
+### Complexity
+
+```text
+Time: O(R × C + K α(R × C))
+Space: O(R × C)
+```
+
+### Source Code
+[Open q2_dynamic_islands_grid.c](LAV_10/q2_dynamic_islands_grid.c)
+
+---
+
+## Application III — Maximum-Weight Component with a Size Limit
+
+### Problem
+After each edge is processed, find the maximum total vertex weight among connected components whose size does not exceed a given limit K.
+
+### Algorithm / Approach
+Maintain connected components and their vertex-weight sums using DSU. A max-heap stores eligible component sums, and version information allows outdated heap entries to be discarded lazily.
+
+### Complexity
+
+```text
+Time: O((V + E) α(V) + E log E) amortised
+Space: O(V + E)
+```
+
+### Source Code
+[Open q3_max_weight_component_size_limit.c](LAV_10/q3_max_weight_component_size_limit.c)
+
+---
+
+## Application IV — Reverse Deletion for Maximum Component Sum
+
+### Problem
+Given vertex weights, an adjacency matrix, and a vertex deletion order, report the maximum connected-component weight sum after each deletion.
+
+### Algorithm / Approach
+Process the deletion sequence in reverse. Activate vertices and union them with already active neighbours using DSU, while recording the maximum component sum corresponding to each deletion state.
+
+### Complexity
+
+```text
+Time: O(V²)
+Space: O(V²)
+```
+
+### Source Code
+[Open q4_reverse_deletion_max_component_sum.c](LAV_10/q4_reverse_deletion_max_component_sum.c)
+
+---
+
+## Application V — Lexicographically Smallest Permutation Using Component Swaps
+
+### Problem
+Find the lexicographically smallest permutation obtainable by swapping values only between positions connected by the given graph.
+
+### Algorithm / Approach
+Use DSU to identify connected components of positions. Group positions by component, sort the values available in each component, and assign them to the component's positions in increasing index order.
+
+### Complexity
+
+```text
+Time: O((n + m) α(n) + n log n)
+Space: O(n)
+```
+
+### Source Code
+[Open q5_lexicographically_smallest_component_swaps.c](LAV_10/q5_lexicographically_smallest_component_swaps.c)
+
+---
+
+# LAB_10 Summary
+
+| Application | Main Technique | Typical Complexity |
+|---|---|---|
+| Online Graph Bipartiteness | DSU with parity | O((V + E) α(V)) |
+| Dynamic Islands | DSU + coordinate flattening | O(RC + K α(RC)) |
+| Maximum-Weight Component with Size Limit | DSU + max-heap | O((V + E) α(V) + E log E) |
+| Reverse Deletion Maximum Component Sum | Reverse processing + DSU | O(V²) |
+| Lexicographically Smallest Component Swaps | DSU + sorting | O((n + m) α(n) + n log n) |
+
+---
+
 # Common Implementation Details
 
 The programs throughout this repository demonstrate several recurring algorithmic techniques.
@@ -1350,7 +1470,7 @@ Reuse results
 Build optimal solution
 ```
 
-Used prominently throughout LAB_7, LAB_8, and LAB_9 for optimisation, sequence, and alphabetic-tree problems.
+Used prominently throughout LAB_7, LAB_8, and LAB_9 for optimisation, sequence, and alphabetic-tree problems. LAB_10 uses DSU to maintain and merge connected components efficiently.
 
 ### Sorting as Preprocessing
 
@@ -1402,6 +1522,9 @@ Used in:
 | Canonical Huffman Coding | O(n log n) |
 | Minimum Meeting Rooms | O(n log n) |
 | Optimal Alphabetic Tree | O(n³) |
+| Online Connectivity with DSU | Near-linear amortised, O(α(n)) per operation |
+| Dynamic Islands | O(RC + K α(RC)) |
+| Component-based Swaps | O((n + m) α(n) + n log n) |
 
 ---
 
@@ -1409,7 +1532,7 @@ Used in:
 
 This repository provides practical implementations of major concepts from **Design and Analysis of Algorithms**.
 
-The nine laboratory assignments collectively cover:
+The ten laboratory assignments collectively cover:
 
 ```text
 LAB_1 → Growth analysis and basic algorithms
@@ -1421,6 +1544,7 @@ LAB_6 → Arrays, matrices, FFT and reversal algorithms
 LAB_7 → Dynamic programming and advanced algorithmic problems
 LAB_8 → Dynamic programming, subsequences, string optimisation and sequence analysis
 LAB_9 → Greedy algorithms, heaps, scheduling and optimisation
+LAB_10 → DSU, dynamic connectivity and graph components
 ```
 
 Together, these programs demonstrate how selecting the appropriate algorithmic strategy and data representation can significantly improve problem-solving efficiency.
