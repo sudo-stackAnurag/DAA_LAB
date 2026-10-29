@@ -85,7 +85,8 @@ DAA_LAB/
 ├── LAB_5/   # Selection, heap sort and quicksort
 ├── LAB_6/   # Array, matrix, convolution and reversal operations
 ├── LAB_7/   # Dynamic programming and advanced algorithmic problems
-└── LAB_8/   # Dynamic programming and subsequence/string optimisation
+├── LAB_8/   # Dynamic programming and subsequence/string optimisation
+└── LAB_9/   # Greedy algorithms, heaps, scheduling and optimisation
 ```
 
 ---
@@ -102,6 +103,7 @@ DAA_LAB/
 | Lab 06 | Arrays, matrices, convolution and reversals | 4 | [LAB_6](LAB_6) |
 | Lab 07 | Advanced algorithmic and dynamic programming problems | 7 | [LAB_7](LAB_7) |
 | Lab 08 | Dynamic programming and optimisation problems | 9 | [LAB_8](LAB_8) |
+| Lab 09 | Greedy algorithms, heaps, scheduling and optimisation | 10 | [LAB_9](LAB_9) |
 
 ---
 
@@ -1136,6 +1138,190 @@ The total stopping time is input dependent; no general proven polynomial bound f
 
 ---
 
+# LAB_9 — Greedy Algorithms and Optimisation
+
+This lab explores greedy strategies, priority queues, scheduling, string construction, and optimisation problems. Each application is implemented in C.
+
+## Application I — Fractional Knapsack with Deterioration
+
+### Problem
+Choose fractional portions of items for a knapsack when each item's value density decreases over time.
+
+### Algorithm / Approach
+Evaluate the time-dependent value density and determine a consumption order and fractional choices that maximise the total value under the capacity constraint.
+
+### Complexity
+The implementation's sorting and scheduling costs depend on the number of items.
+
+### Source Code
+[Open q1_fractional_knapsack_decay.c](LAB_9/q1_fractional_knapsack_decay/q1_fractional_knapsack_decay.c)
+
+---
+
+## Application II — Canonical Huffman Coding
+
+### Problem
+Construct canonical Huffman codes from symbol frequencies.
+
+### Algorithm / Approach
+Build Huffman code lengths from symbol frequencies, sort symbols by code length and symbol order, then assign canonical binary codes.
+
+### Complexity
+
+```text
+Time: O(n log n)
+```
+
+### Source Code
+[Open q2_canonical_huffman.c](LAB_9/q2_canonical_huffman/q2_canonical_huffman.c)
+
+---
+
+## Application III — Minimum Refuelling Stops
+
+### Problem
+Determine the minimum number of refuelling stops required to reach a destination.
+
+### Algorithm / Approach
+Use a greedy strategy that selects the largest available fuel supply among stations already reachable whenever additional fuel is needed.
+
+### Complexity
+Typically O(n log n) when a max-heap is used for reachable fuel supplies.
+
+### Source Code
+[Open q3_minimum_refuelling_stops.c](LAB_9/q3_minimum_refuelling_stops/q3_minimum_refuelling_stops.c)
+
+---
+
+## Application IV — Minimum Cost to Connect Sticks
+
+### Problem
+Connect all sticks into one stick while minimising the total connection cost, where connecting two sticks costs the sum of their lengths.
+
+### Algorithm / Approach
+Repeatedly connect the two shortest sticks, add their combined length to the total cost, and insert the combined stick back into a min-heap.
+
+### Complexity
+Typically O(n log n) using a min-heap.
+
+### Source Code
+[Open q4_minimum_stick_connection.c](LAB_9/q4_minimum_stick_connection/q4_minimum_stick_connection.c)
+
+---
+
+## Application V — Candy Distribution
+
+### Problem
+Determine the minimum number of candies needed to satisfy rating-based constraints, giving each child at least one candy and more candies than a lower-rated neighbour when required.
+
+### Algorithm / Approach
+Use a greedy two-pass strategy: first handle increasing ratings from left to right, then correct decreasing-rating constraints from right to left.
+
+### Complexity
+Time: O(n); Space: O(n).
+
+### Source Code
+[Open q5_candy_distribution.c](LAB_9/q5_candy_distribution/q5_candy_distribution.c)
+
+---
+
+## Application VI — Reorganise String with K-Distance Separation
+
+### Problem
+Rearrange a string so that identical characters are at least k positions apart, if such a rearrangement exists.
+
+### Algorithm / Approach
+Prioritise characters with the highest remaining frequencies and use a waiting queue to prevent a character from being reused before the required distance has elapsed.
+
+### Complexity
+Typically O(n log σ), where n is the string length and σ is the number of distinct characters, depending on the priority-queue implementation.
+
+### Source Code
+[Open q6_reorganize_string_k_distance.c](LAB_9/q6_reorganize_string_k_distance/q6_reorganize_string_k_distance.c)
+
+---
+
+## Application VII — Minimise Array Deviation
+
+### Problem
+Minimise the difference between the maximum and minimum array values using the permitted operations on elements.
+
+### Algorithm / Approach
+Use a max-heap to repeatedly reduce the current maximum value where allowed, while tracking the smallest value encountered and the minimum deviation.
+
+### Complexity
+Typically O(n log M), where M reflects the range of values and the number of heap operations.
+
+### Source Code
+[Open q7_minimize_array_deviation.c](LAB_9/q7_minimize_array_deviation/q7_minimize_array_deviation.c)
+
+---
+
+## Application VIII — Minimum Meeting Rooms
+
+### Problem
+Find the minimum number of rooms needed to schedule all meetings without overlap.
+
+### Algorithm / Approach
+Sort meetings by start time and track the earliest finishing meeting using a min-heap. Reuse a room when its meeting has finished.
+
+### Complexity
+O(n log n) time with sorting and heap operations.
+
+### Source Code
+[Open q8_minimum_meeting_rooms.c](LAB_9/q8_minimum_meeting_rooms/q8_minimum_meeting_rooms.c)
+
+---
+
+## Application IX — Optimal Alphabetic Tree
+
+### Problem
+Construct an optimal binary tree while preserving the original order of the keys or symbols.
+
+### Algorithm / Approach
+Use interval dynamic programming to evaluate possible roots for each contiguous interval while maintaining the required alphabetic order.
+
+### Complexity
+The standard dynamic-programming approach is typically O(n³) time and O(n²) space.
+
+### Source Code
+[Open q9_optimal_alphabetic_tree.c](LAB_9/q9_optimal_alphabetic_tree/q9_optimal_alphabetic_tree.c)
+
+---
+
+## Application X — Greedy Superstring Exploration
+
+### Problem
+Explore a greedy approach to combining strings into a superstring that contains the input strings.
+
+### Algorithm / Approach
+Repeatedly identify and merge strings with useful suffix-prefix overlap, then assess the superstring produced by the greedy choices.
+
+### Complexity
+Depends on the overlap-search and merging implementation; repeated pairwise overlap checks can be quadratic or higher in the number and length of strings.
+
+### Source Code
+[Open q10_greedy_superstring_exploration.c](LAB_9/q10_greedy_superstring_exploration/q10_greedy_superstring_exploration.c)
+
+---
+
+# LAB_9 Summary
+
+| Application | Main Technique | Typical Complexity |
+|---|---|---|
+| Fractional Knapsack with Deterioration | Greedy scheduling | Implementation dependent |
+| Canonical Huffman Coding | Greedy + coding | O(n log n) |
+| Minimum Refuelling Stops | Greedy + max-heap | O(n log n) |
+| Minimum Stick Connection | Greedy + min-heap | O(n log n) |
+| Candy Distribution | Greedy, two passes | O(n) |
+| String Reorganisation | Greedy + priority queue | O(n log σ) |
+| Minimise Array Deviation | Greedy + max-heap | Heap-operation dependent |
+| Minimum Meeting Rooms | Sorting + min-heap | O(n log n) |
+| Optimal Alphabetic Tree | Interval dynamic programming | O(n³) |
+| Greedy Superstring Exploration | Greedy overlap merging | Implementation dependent |
+
+---
+
 # Common Implementation Details
 
 The programs throughout this repository demonstrate several recurring algorithmic techniques.
@@ -1164,7 +1350,7 @@ Reuse results
 Build optimal solution
 ```
 
-Used prominently throughout LAB_7 and LAB_8 for optimisation and sequence problems.
+Used prominently throughout LAB_7, LAB_8, and LAB_9 for optimisation, sequence, and alphabetic-tree problems.
 
 ### Sorting as Preprocessing
 
@@ -1213,6 +1399,9 @@ Used in:
 | Edit Distance | O(m × n) |
 | Rod Cutting | O(n²) |
 | Optimal BST | O(n³) |
+| Canonical Huffman Coding | O(n log n) |
+| Minimum Meeting Rooms | O(n log n) |
+| Optimal Alphabetic Tree | O(n³) |
 
 ---
 
@@ -1220,7 +1409,7 @@ Used in:
 
 This repository provides practical implementations of major concepts from **Design and Analysis of Algorithms**.
 
-The eight laboratory assignments collectively cover:
+The nine laboratory assignments collectively cover:
 
 ```text
 LAB_1 → Growth analysis and basic algorithms
@@ -1231,6 +1420,7 @@ LAB_5 → Selection and efficient sorting
 LAB_6 → Arrays, matrices, FFT and reversal algorithms
 LAB_7 → Dynamic programming and advanced algorithmic problems
 LAB_8 → Dynamic programming, subsequences, string optimisation and sequence analysis
+LAB_9 → Greedy algorithms, heaps, scheduling and optimisation
 ```
 
 Together, these programs demonstrate how selecting the appropriate algorithmic strategy and data representation can significantly improve problem-solving efficiency.
