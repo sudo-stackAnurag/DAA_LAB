@@ -87,7 +87,8 @@ DAA_LAB/
 ├── LAB_7/   # Dynamic programming and advanced algorithmic problems
 ├── LAB_8/   # Dynamic programming and subsequence/string optimisation
 ├── LAB_9/   # Greedy algorithms, heaps, scheduling and optimisation
-└── LAV_10/  # LAB 10: DSU, dynamic connectivity and graph components
+├── LAV_10/  # LAB 10: DSU, dynamic connectivity and graph components
+└── LAB_11/  # BFS variants and shortest-path applications
 ```
 
 ---
@@ -105,6 +106,8 @@ DAA_LAB/
 | Lab 07 | Advanced algorithmic and dynamic programming problems | 7 | [LAB_7](LAB_7) |
 | Lab 08 | Dynamic programming and optimisation problems | 9 | [LAB_8](LAB_8) |
 | Lab 09 | Greedy algorithms, heaps, scheduling and optimisation | 10 | [LAB_9](LAB_9) |
+| Lab 10 | DSU, dynamic connectivity and graph components | 5 | [LAV_10](LAV_10) |
+| Lab 11 | BFS variants and shortest-path applications | 3 | [LAB_11](LAB_11) |
 | Lab 10 | Disjoint sets, dynamic connectivity and graph components | 5 | [LAB 10 files](LAV_10) |
 
 ---
@@ -1442,6 +1445,76 @@ Space: O(n)
 
 ---
 
+# LAB_11 — BFS Variants and Shortest-Path Applications
+
+This lab explores breadth-first search variants and efficient graph representations for shortest-path and graph-partitioning problems. The implementations use CSR adjacency lists where appropriate to keep graph storage efficient.
+
+## Application I — Parity-Constrained 0-1 BFS
+
+### Problem
+Find shortest-path costs in a graph with edge weights 0 or 1 while tracking the parity of the number of weight-1 edges. A penalty C is applied when the resulting parity is odd.
+
+### Algorithm / Approach
+Expand the state space to `(vertex, parity)`. A weight-0 edge preserves parity and is pushed to the front of the deque; a weight-1 edge flips parity and is pushed to the back. The final answer for a vertex is the minimum of its even-parity distance and odd-parity distance plus C.
+
+### Complexity
+
+```text
+Time: O(V + E)
+Space: O(V + E)
+```
+
+### Source Code
+[Open Q1_parity_zero_one_bfs.c](LAB_11/Q1_parity_zero_one_bfs.c)
+
+---
+
+## Application II — Multi-Source BFS Voronoi Partition
+
+### Problem
+Assign each vertex to its nearest hub/source within a maximum radius R. Ties are resolved in favour of the hub with the smallest index; vertices outside the radius remain unassigned.
+
+### Algorithm / Approach
+Initialize all hubs at distance zero in increasing index order and run a multi-source BFS. Stop expanding vertices at distance R. Queue ordering ensures the smallest-index hub wins equal-distance ties.
+
+### Complexity
+
+```text
+Time: O(V + E + K)
+Space: O(V + E)
+```
+
+### Source Code
+[Open Q2_multisource_bfs_voronoi.c](LAB_11/Q2_multisource_bfs_voronoi.c)
+
+---
+
+## Application III — Bidirectional BFS Word Ladder
+
+### Problem
+Find the shortest transformation sequence between two words when each step changes exactly one character and every intermediate word must belong to the supplied dictionary.
+
+### Algorithm / Approach
+Represent one-character wildcard patterns as exact numeric keys and sort the pattern-word pairs to group adjacent words efficiently. Run bidirectional BFS, expanding the smaller frontier one complete level at a time, and retain the minimum meeting distance.
+
+### Complexity
+Preprocessing: O(NL log(NL)) for sorting wildcard-pattern records. BFS complexity depends on the total pattern-group adjacency explored; the pattern representation avoids pairwise O(N²L) word comparisons.
+
+### Source Code
+[Open Q3_bidirectional_bfs_word_ladder.c](LAB_11/Q3_bidirectional_bfs_word_ladder.c)
+
+---
+
+# LAB_11 Summary
+
+| Application | Main Technique | Typical Complexity |
+|---|---|---|
+| Parity-Constrained Shortest Path | State-expanded 0-1 BFS | O(V + E) |
+| Multi-Source Voronoi Partition | Multi-source BFS | O(V + E + K) |
+| Word Ladder | Wildcard indexing + bidirectional BFS | O(NL log(NL)) preprocessing |
+
+---
+
 # Common Implementation Details
 
 The programs throughout this repository demonstrate several recurring algorithmic techniques.
@@ -1470,7 +1543,7 @@ Reuse results
 Build optimal solution
 ```
 
-Used prominently throughout LAB_7, LAB_8, and LAB_9 for optimisation, sequence, and alphabetic-tree problems. LAB_10 uses DSU to maintain and merge connected components efficiently.
+Used prominently throughout LAB_7, LAB_8, and LAB_9 for optimisation, sequence, and alphabetic-tree problems. LAB_11 applies BFS variants to shortest paths, source assignment, and word transformation. LAB_10 uses DSU to maintain and merge connected components efficiently.
 
 ### Sorting as Preprocessing
 
@@ -1522,6 +1595,9 @@ Used in:
 | Canonical Huffman Coding | O(n log n) |
 | Minimum Meeting Rooms | O(n log n) |
 | Optimal Alphabetic Tree | O(n³) |
+| 0-1 BFS | O(V + E) |
+| Multi-source BFS | O(V + E) |
+| Bidirectional BFS | Depends on explored search space |
 | Online Connectivity with DSU | Near-linear amortised, O(α(n)) per operation |
 | Dynamic Islands | O(RC + K α(RC)) |
 | Component-based Swaps | O((n + m) α(n) + n log n) |
@@ -1532,7 +1608,7 @@ Used in:
 
 This repository provides practical implementations of major concepts from **Design and Analysis of Algorithms**.
 
-The ten laboratory assignments collectively cover:
+The eleven laboratory assignments collectively cover:
 
 ```text
 LAB_1 → Growth analysis and basic algorithms
@@ -1545,6 +1621,7 @@ LAB_7 → Dynamic programming and advanced algorithmic problems
 LAB_8 → Dynamic programming, subsequences, string optimisation and sequence analysis
 LAB_9 → Greedy algorithms, heaps, scheduling and optimisation
 LAB_10 → DSU, dynamic connectivity and graph components
+LAB_11 → BFS variants, shortest paths and graph partitioning
 ```
 
 Together, these programs demonstrate how selecting the appropriate algorithmic strategy and data representation can significantly improve problem-solving efficiency.
